@@ -1,13 +1,37 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+
+<!--The below block of code is left there for ease of use in future during development-->
+<!--{% for recipe in recipes %}-->
+
+<!--<h2>{{recipe.recipe_name}}</h2>-->
+<!--<p>Cuisine: {{recipe.category_name}}</p>-->
+<!--<p>Serves: {{recipe.recipe_portion}}</p>-->
+<!--<p>Difficulty: {{recipe.recipe_difficulty}}</p>-->
+<!--<p>Prep To Plate in: {{recipe.recipe_preparation_time}}</p>-->
+<!--<p>Instructions: {{recipe.recipe_instructions}}</p>-->
+
+<!--{% endfor %}-->
 
 
-{% block content %}
+{% for recipe in recipes %}
+<div class="accordion" id="recipeAccordion">
+    <div class="card">
+        <div class="card-header" id="recipeHeading">
+            <h1>{{recipe.recipe_name}}</h1>
+            <h2 class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#moreDetails" aria-expanded="false" aria-controls="moreDetails">More Details
+            </h2>
+        </div>
+        <div id="moreDetails" class="collapse" aria-labelledby="recipeHeading" data-parent="#recipeAccordion">
+            <div class="card-body">
+                <p>Serves: {{recipe.recipe_portion}}</p>
+                <p>Difficulty: {{recipe.recipe_difficulty}}</p>
+                <p>Prep To Plate in: {{recipe.recipe_preparation_time}}</p>
+            </div>
+        </div>
+        <p>Instructions: {{recipe.recipe_instructions}}</p>
+    </div>
+</div>
 
-    {% for recipe in recipes %}
-   <h2>{{recipe.recipe_name}}</h2> 
-    <p>Cuisine: {{recipe.category_name}}</p>
-    <p>Instructions: {{recipe.recipe_instructions}}</p>
-    {% endfor %}
-    
+{% endfor %} 
+
 {% endblock %}
-    
