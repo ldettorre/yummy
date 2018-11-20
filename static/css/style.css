@@ -1,4 +1,20 @@
+
+
+/*----------Get Recipes Page----------*/
+
 .moreDetailsButton{
-    color:white;
-    background-color:lightblue;
+    color: white;
+    background-color: lightblue;
+}
+
+
+/*----------Get Recipes Page----------*/
+
+.title {
+    background-color:lemonchiffon;
+    margin-bottom: 10px;
+}
+
+.form-control{
+    resize:none;
 }

@@ -23,7 +23,13 @@ def get_recipes():
     recipes = mongo.db.recipes.find()
     recipe_list = [recipe for recipe in recipes]
     return render_template("recipes.html", recipes=recipe_list)
-    
+
+
+@app.route("/add_recipe")
+def add_recipes():
+    # recipes = mongo.db.recipes.find()
+    # recipe_list = [recipe for recipe in recipes]
+    return render_template("addrecipe.html")   
 
 
 if __name__ == '__main__':
