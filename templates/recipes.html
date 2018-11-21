@@ -19,7 +19,7 @@
 <div class="accordion" id="recipeAccordion">
     <div class="card">
         <div class="card-header" id="recipeHeading">
-            <h1>{{recipe.recipe_name}}</h1>
+            <h1>{{recipe.recipe_title}}</h1>
             <h3>
                 <i class="fas fa-utensils btn moreDetailsButton collapsed" data-toggle="collapse" data-target="#moreDetails" aria-expanded="false" aria-controls="moreDetails">
                     More Details
@@ -33,6 +33,8 @@
                 <p>Prep To Plate in: {{recipe.recipe_preparation_time}}</p>
             </div>
         </div>
+        <p>Summary: {{recipe.recipe_summary}}</p>
+        <p>Ingredients: {{recipe.recipe_ingredients}}</p>
         <p>Instructions: {{recipe.recipe_instructions}}</p>
     </div>
 </div>
