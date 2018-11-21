@@ -18,7 +18,7 @@ def get_index():
     return render_template("index.html")
 
 
-@app.route("/get_recipes")
+@app.route("/get_recipe")
 def get_recipes():
     recipes = mongo.db.recipes.find()
     recipe_list = [recipe for recipe in recipes]
