@@ -27,7 +27,13 @@ def get_recipe():
 @app.route("/add_recipe")
 def add_recipe():
     cuisine = mongo.db.cuisine.find()
-    return render_template("add_recipe.html", cuisine=cuisine)   
+    return render_template("add_recipe.html", cuisine=cuisine) 
+    
+@app.route("/insert_recipe", methods=["POST"])
+def insert_recipe():
+    recipes = mongo.db.recipes
+    recipes.insert_one(request.form.to_dict())
+    return redirect(url_for("get_recipe")) 
 
 
 if __name__ == '__main__':
