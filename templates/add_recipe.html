@@ -11,25 +11,30 @@
     </div>
 </div>
 <div class="container">
-    <form>
+    <form action="{{ url_for('add_recipe') }}" method="POST"  class="col-sm-12">
         <div class="form-group">
             <label for="recipe_title">Recipe Title</label>
             <input type="text" class="form-control" id="recipe_title">
         </div>
         
         <div class="form-group">
-            <label for="chooseCategory">Choose Category</label>
-                <select class="form-control" id="recipe_category">
-                      <option>Breakfast</option>
-                      <option>Lunch</option>
-                      <option>Dinner</option>
-                      <option>Late Supper</option>
-                </select>
+            <label for="recipe_cuisine">Choose Cuisine</label>
+            <select class="form-control" id="cuisine" name="recipe_cuisine">
+                <option value="" disabled selected></option> <!-- This empty option is to allow the form to appear without a default cuisine -->
+                {% for cuisine in cuisine %}
+                      <option value="{{cuisine.recipe_cuisine}}">{{cuisine.recipe_cuisine}}</option>
+                {% endfor %}
+            </select>
         </div>
     
         <div class="form-group">
             <label for="recipe_summary">Dish Summary</label>
             <textarea class="form-control" id="recipe_summary" rows="4"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="recipe_ingredients">Ingredients</label>
+            <textarea class="form-control" id="recipe_ingredients" rows="4"></textarea>
         </div>
         
         <div class="form-group">

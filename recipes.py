@@ -19,17 +19,15 @@ def get_index():
 
 
 @app.route("/get_recipe")
-def get_recipes():
+def get_recipe():
     recipes = mongo.db.recipes.find()
-    recipe_list = [recipe for recipe in recipes]
-    return render_template("recipes.html", recipes=recipe_list)
+    return render_template("get_recipe.html", recipes=recipes)
 
 
 @app.route("/add_recipe")
-def add_recipes():
-    # recipes = mongo.db.recipes.find()
-    # recipe_list = [recipe for recipe in recipes]
-    return render_template("addrecipe.html")   
+def add_recipe():
+    cuisine = mongo.db.cuisine.find()
+    return render_template("add_recipe.html", cuisine=cuisine)   
 
 
 if __name__ == '__main__':
