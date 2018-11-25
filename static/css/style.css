@@ -1,10 +1,15 @@
-
+body {
+    max-width:100%;
+    word-wrap: break-word;
+}
 
 /*----------Get Recipes Page----------*/
 
-.moreDetailsButton{
-    color: white;
-    background-color: lightblue;
+
+.edit-recipe-button{
+    height:35px;
+    width:auto;
+    margin:5px;
 }
 
 

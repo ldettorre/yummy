@@ -22,19 +22,30 @@ def get_index():
 def get_recipe():
     recipes = mongo.db.recipes.find()
     return render_template("get_recipe.html", recipes=recipes)
-
+    
 
 @app.route("/add_recipe")
 def add_recipe():
     cuisine = mongo.db.cuisine.find()
     return render_template("add_recipe.html", cuisine=cuisine) 
     
+    
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
     recipes = mongo.db.recipes
     recipes.insert_one(request.form.to_dict())
     return redirect(url_for("get_recipe")) 
+    
+    
+@app.route("/edit_recipe/<recipe_id>")
+def edit_recipe(recipe_id):
+    chosen_recipe = mongo.db.recipes.find_one({"_id":ObjectId(recipe_id)})
+    all_cuisine = mongo.db.cuisine.find()
+    return render_template("edit_recipe.html", recipe=chosen_recipe, cuisine=all_cuisine)
+    
 
+        
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP', '0.0.0.0'), port=int(os.getenv('PORT', 8080)),debug=True)
+    
