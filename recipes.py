@@ -39,9 +39,10 @@ def insert_recipe():
     
 @app.route("/edit_recipe/<recipe_id>")
 def edit_recipe(recipe_id):
-    chosen_recipe = mongo.db.recipes.find_one({"_id":ObjectId(recipe_id)})
-    all_cuisine = mongo.db.cuisine.find()
-    return render_template("edit_recipe.html", recipe=chosen_recipe, cuisine=all_cuisine)
+    _recipe = mongo.db.recipes.find_one({"_id":ObjectId(recipe_id)})
+    _cuisine = mongo.db.cuisine.find()
+    cuisine_list = [ cuisine for cuisine in _cuisine]
+    return render_template("edit_recipe.html", recipe=_recipe, cuisine=cuisine_list)
     
 
         
