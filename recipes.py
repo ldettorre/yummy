@@ -44,8 +44,7 @@ def edit_recipe(recipe_id):
     cuisine_list = [ cuisine for cuisine in _cuisine]
     return render_template("edit_recipe.html", recipe=_recipe, cuisine=cuisine_list)
         
-    })
-    return redirect(url_for("get_recipe"))
+    
     
 
 
