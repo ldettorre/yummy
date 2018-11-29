@@ -45,7 +45,6 @@ def edit_recipe(recipe_id):
     return render_template("edit_recipe.html", recipe=_recipe, cuisine=cuisine_list)
     
 
-        
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP', '0.0.0.0'), port=int(os.getenv('PORT', 8080)),debug=True)
