@@ -64,12 +64,6 @@ def update_recipe(recipe_id):
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id":ObjectId(recipe_id)})
     return redirect(url_for("get_recipe"))
-    
-    
-    # _recipe = mongo.db.recipes.find_one({"_id":ObjectId(recipe_id)})
-    # _cuisine = mongo.db.cuisine.find()
-    # cuisine_list = [ cuisine for cuisine in _cuisine]
-    # return render_template("edit_recipe.html", recipe=_recipe, cuisine=cuisine_list)
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP', '0.0.0.0'), port=int(os.getenv('PORT', 8080)),debug=True)
