@@ -44,9 +44,32 @@ def edit_recipe(recipe_id):
     cuisine_list = [ cuisine for cuisine in _cuisine]
     return render_template("edit_recipe.html", recipe=_recipe, cuisine=cuisine_list)
         
+@app.route("/update_recipe/<recipe_id>", methods=["POST"])
+def update_recipe(recipe_id):
+    recipes = mongo.db.recipes
+    recipes.update({"_id":ObjectId(recipe_id)},
+    {
+        "recipe_title" : request.form.get["recipe_title"],
+        "recipe_cuisine" : request.form.get["recipe_cuisine"],
+        "recipe_summary" : request.form.get["recipe_summary"],
+        "recipe_ingredients" : request.form.get["recipe_ingredients"],
+        "recipe_instructions" : request.form.get["recipe_instructions"],
+        "recipe_portion" : request.form.get["recipe_portion"],
+        "recipe_difficulty" : request.form.get["recipe_difficulty"],
+        "recipe_preparation_time" : request.form.get["recipe_preparation_time"]
+    })
+    return redirect(url_for("get_recipe"))
+    
+@app.route("/delete_recipe/<recipe_id>")
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({"_id":ObjectId(recipe_id)})
+    return redirect(url_for("get_recipe"))
     
     
-
+    # _recipe = mongo.db.recipes.find_one({"_id":ObjectId(recipe_id)})
+    # _cuisine = mongo.db.cuisine.find()
+    # cuisine_list = [ cuisine for cuisine in _cuisine]
+    # return render_template("edit_recipe.html", recipe=_recipe, cuisine=cuisine_list)
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP', '0.0.0.0'), port=int(os.getenv('PORT', 8080)),debug=True)
