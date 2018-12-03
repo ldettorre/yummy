@@ -64,6 +64,11 @@ def update_recipe(recipe_id):
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id":ObjectId(recipe_id)})
     return redirect(url_for("get_recipe"))
+    
+@app.route("/get_cuisines")
+def get_cuisines():
+    cuisine = mongo.db.cuisine.find()
+    return render_template("cuisines.html", cuisine=cuisine) 
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP', '0.0.0.0'), port=int(os.getenv('PORT', 8080)),debug=True)

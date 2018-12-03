@@ -1,0 +1,28 @@
+{% extends 'base.html' %} 
+
+{% block content %} 
+
+<div class="row">
+        <div class="col-sm-12 text-center">
+            <h1>Cuisine Page</h1>
+        </div>
+    </div>
+    <br>
+    
+{% for cuisine in cuisine %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <div id="cuisineHeading">
+                <h3>{{cuisine.recipe_cuisine}}</h3>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endfor %} 
+
+{% endblock %}
