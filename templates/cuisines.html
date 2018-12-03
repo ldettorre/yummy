@@ -1,28 +1,25 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %} {% block content %}
 
-{% block content %} 
 
-<div class="row">
+<div class="container">
+    <div class="row">
         <div class="col-sm-12 text-center">
             <h1>Cuisine Page</h1>
         </div>
     </div>
-    <br>
-    
-{% for cuisine in cuisine %}
+    <br> {% for cuisine in cuisine %}
 
-<div class="container">
+
     <div class="row">
         <div class="col-sm-12 text-center">
             <div id="cuisineHeading">
                 <h3>{{cuisine.recipe_cuisine}}</h3>
             </div>
+            <a href="{{url_for("delete_cuisine" , cuisine_id=cuisine._id)}}" class="btn btn-primary edit-cuisine-button">Delete cuisine</a>
         </div>
     </div>
 
 </div>
 
 
-{% endfor %} 
-
-{% endblock %}
+{% endfor %} {% endblock %}

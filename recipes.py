@@ -70,6 +70,18 @@ def get_cuisines():
     cuisine = mongo.db.cuisine.find()
     return render_template("cuisines.html", cuisine=cuisine) 
 
+@app.route("/delete_cuisine/<cuisine_id>")
+def delete_cuisine(cuisine_id):
+    mongo.db.cuisine.remove({"_id":ObjectId(cuisine_id)})
+    return redirect(url_for("get_cuisines"))
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
     app.run(host=os.getenv('IP', '0.0.0.0'), port=int(os.getenv('PORT', 8080)),debug=True)
     

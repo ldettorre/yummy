@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block content %}
+
+<h2>Edit Cuisine</h2>
+<div class="title">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Edit Cuisine</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <form action="{{ url_for('insert_cuisine') }}" method="POST" class="col-sm-6">
+        <div class="form-group">
+            <label for="recipe_cuisine">Recipe Cuisine</label>
+            <br>
+            <input type="text" name="recipe_cuisine" id="recipe_cuisine" class="form-control" value="{{cuisine.recipe_cuisine}}" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="recipe_cuisine">Choose Cuisine</label>
+            <select class="form-control" id="cuisine" name="recipe_cuisine">
+                <option value="" disabled selected></option> <!-- This empty option is to allow the form to appear without a default cuisine -->
+                {% for c in cuisine %}
+                    {% if c.recipe_cuisine == recipe.recipe_cuisine %}
+                      <option value="{{c.recipe_cuisine}}" selected>{{c.recipe_cuisine}}</option>
+                      {% else %}
+                      <option value="{{c.recipe_cuisine}}">{{c.recipe_cuisine}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+    </form>
+
+</div>
+
+
+
+
+{% endblock %}
