@@ -17,6 +17,7 @@ mongo = PyMongo(app)
 def get_index():
     return render_template("index.html")
 
+#----- Recipe Functions -----#
 
 @app.route("/get_recipe")
 def get_recipe():
@@ -44,6 +45,7 @@ def edit_recipe(recipe_id):
     cuisine_list = [ cuisine for cuisine in _cuisine]
     return render_template("edit_recipe.html", recipe=_recipe, cuisine=cuisine_list)
         
+        
 @app.route("/update_recipe/<recipe_id>", methods=["POST"])
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes
@@ -60,20 +62,40 @@ def update_recipe(recipe_id):
     })
     return redirect(url_for("get_recipe"))
     
+    
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id":ObjectId(recipe_id)})
     return redirect(url_for("get_recipe"))
     
+    
+    
+#----- Cuisine Functions -----#
+
 @app.route("/get_cuisines")
 def get_cuisines():
     cuisine = mongo.db.cuisine.find()
     return render_template("cuisines.html", cuisine=cuisine) 
+    
+    
+@app.route("/add_cuisine")
+def add_cuisine():
+    cuisine = mongo.db.cuisine.find()
+    return render_template("add_cuisine.html", cuisine=cuisine) 
+
+    
+@app.route("/insert_cuisine", methods=["POST"])
+def insert_cuisine():
+    cuisines = mongo.db.cuisine
+    cuisines.insert_one(request.form.to_dict())
+    return redirect(url_for("get_cuisines"))
+
 
 @app.route("/delete_cuisine/<cuisine_id>")
 def delete_cuisine(cuisine_id):
     mongo.db.cuisine.remove({"_id":ObjectId(cuisine_id)})
     return redirect(url_for("get_cuisines"))
+    
 
 
 
