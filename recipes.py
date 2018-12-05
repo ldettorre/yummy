@@ -96,11 +96,20 @@ def delete_cuisine(cuisine_id):
     mongo.db.cuisine.remove({"_id":ObjectId(cuisine_id)})
     return redirect(url_for("get_cuisines"))
     
-
-
-
-
-
+    
+@app.route("/edit_cuisine/<cuisine_id>") 
+def edit_cuisine(cuisine_id):
+    cuisine = mongo.db.cuisine.find_one({"_id":ObjectId(cuisine_id)})
+    return render_template("edit_cuisine.html", cuisine = cuisine)
+    
+    
+@app.route("/update_cuisine/<cuisine_id>", methods=["POST"])
+def update_cuisine(cuisine_id):
+    cuisine = mongo.db.cuisine
+    cuisine.update(
+        {"_id":ObjectId(cuisine_id)},
+        {"recipe_cuisine" : request.form.get("recipe_cuisine")})
+    return redirect(url_for("get_cuisines"))
 
 
 
