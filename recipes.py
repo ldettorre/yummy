@@ -49,16 +49,19 @@ def edit_recipe(recipe_id):
 @app.route("/update_recipe/<recipe_id>", methods=["POST"])
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes
-    recipes.update({"_id":ObjectId(recipe_id)},
+    recipes.update(
+        {"_id":ObjectId(recipe_id)},
     {
-        "recipe_title" : request.form.get["recipe_title"],
-        "recipe_cuisine" : request.form.get["recipe_cuisine"],
-        "recipe_summary" : request.form.get["recipe_summary"],
-        "recipe_ingredients" : request.form.get["recipe_ingredients"],
-        "recipe_instructions" : request.form.get["recipe_instructions"],
-        "recipe_portion" : request.form.get["recipe_portion"],
-        "recipe_difficulty" : request.form.get["recipe_difficulty"],
-        "recipe_preparation_time" : request.form.get["recipe_preparation_time"]
+        "recipe_title" : request.form.get("recipe_title"),
+        "recipe_cuisine" : request.form.get("recipe_cuisine"),
+        "recipe_summary" : request.form.get("recipe_summary"),
+        "recipe_ingredients" : request.form.get("recipe_ingredients"),
+        "recipe_instructions" : request.form.get("recipe_instructions"),
+        "recipe_portion" : request.form.get("recipe_portion"),
+        "recipe_difficulty" : request.form.get("recipe_difficulty"),
+        "recipe_preparation_time" : request.form.get("recipe_preparation_time"),
+        "recipe_cooking_time" : request.form.get("recipe_cooking_time")
+        
     })
     return redirect(url_for("get_recipe"))
     
