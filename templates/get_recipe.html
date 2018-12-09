@@ -33,18 +33,23 @@
             <p>Cooking Time: {{recipe.recipe_cooking_time}} minutes</p>
         </div>
     </div>
+    
+    <br>
 
     <div class="row text-center">
         <div class="col-sm-12">
-            <p>Summary: {{recipe.recipe_summary}}</p>
+            <p class="text_format">Summary: {{recipe.recipe_summary}}</p>
         </div>
     </div>
+    
+    <br>
+    
     <div class="row text-center">
-        <div class="col-sm-6 col-xs-12">
-            <p>Ingredients: {{recipe.recipe_ingredients}}</p>
+        <div class="col-sm-6 col-xs-12 ingredients_padding">
+            <p class="text_format">Ingredients: {{recipe.recipe_ingredients}}</p>
         </div>
         <div class="col-sm-6 col-xs-12">
-            <p>Instructions: {{recipe.recipe_instructions}}</p>
+            <p class="text_format">Instructions: {{recipe.recipe_instructions}}</p>
         </div>
     </div>
 

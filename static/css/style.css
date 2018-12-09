@@ -1,26 +1,37 @@
 body {
-    max-width:100%;
+    max-width: 100%;
     word-wrap: break-word;
 }
 
 /*----------Get Recipes Page----------*/
 
-
-.edit-recipe-button{
-    height:35px;
-    width:auto;
-    margin:5px;
+.edit-recipe-button {
+    height: 35px;
+    width: auto;
+    margin: 5px;
 }
 
 
 /*----------ADD Recipes Page----------*/
 
 .title {
-    background-color:lemonchiffon;
+    background-color: lemonchiffon;
     margin-bottom: 10px;
 }
 
-.form-control{
+.form-control {
     resize: vertical;
 }
 
+.text_format {
+    white-space: pre-wrap;
+}
+
+
+/*----------Media Queries----------*/
+
+@media (max-width: 768px) {
+    .ingredients_padding {
+        padding-bottom: 3vh;
+    }
+}
