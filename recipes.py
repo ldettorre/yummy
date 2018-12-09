@@ -1,21 +1,44 @@
 import os
-from flask import Flask, render_template,redirect,request, url_for
+from flask import Flask, render_template,redirect,request, url_for, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from flask_bcrypt import bcrypt
 
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
-
-
+app.secret_key = os.urandom(24)
 
 
 mongo = PyMongo(app)
 
 @app.route("/")
 def get_index():
+    if "username" in session:
+        return "You are logged in as " + session["username"]
     return render_template("index.html")
+    
+
+@app.route("/register", methods=["POST","GET"])
+def register():
+    if request.method == "POST":
+        users = mongo.db.users
+        current_users = users.find_one({"Username":request.form.get("username")})
+        
+        if current_users is None:
+            hashpassword = bcrypt.hashpw(request.form.get("password").encode('utf-8'), bcrypt.gensalt())
+            users.insert({"username": request.form.get("username"), "password" : hashpassword})
+            session["username"] = request.form.get("username")
+            return redirect (url_for("get_index"))
+        
+        return "This Username is taken"
+    return render_template("register.html")
+        
+    
+
+
+
 
 #----- Recipe Functions -----#
 

@@ -4,7 +4,11 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 text-center">
+            {% if session["user"] %}
+            <h3>Welcome to the Homepage {{session["user"]}}</h3>
+            {% else %}
             <h3>Welcome to the Homepage</h3>
+            {% endif %}
         </div>
         <a href="/get_recipe" class="btn btn-primary">Get Recipe</a>
         <a href="/add_recipe" class="btn btn-primary">Add Recipe</a>
