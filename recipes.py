@@ -3,7 +3,7 @@ from flask import Flask, render_template,redirect,request, url_for, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from flask_bcrypt import bcrypt
-import bcrypt
+
 
 
 app = Flask(__name__)
@@ -21,17 +21,32 @@ def get_index():
         
     return render_template("index.html")
     
+# @app.route("/login", methods=["POST"])
+# def login():
+#     users = mongo.db.users.find()
+#     user_login = request.form.get("username")
+
+#     if user_login in users:
+#             session["username"] = request.form["username"]
+            
+#             return redirect(url_for('get_index'))
+#     return "Incorrect Username"
+
 @app.route("/login", methods=["POST"])
 def login():
-    users = mongo.db.users
-    user_login = users.find_one({'username' : request.form.get('username')})
+    users = mongo.db.users.find()
+    user_login = request.form.get("username")
 
-    if user_login in users:
-        if bcrypt.hashpw(request.form['password'].encode('utf-8'), user_login['password'].encode('utf-8')) == user_login['password'].encode('utf-8'):
-            session['username'] = request.form['username']
+    for u in users:
+        if u["username"] == user_login:
+            session["username"] = user_login
             return redirect(url_for('get_index'))
-
-    return 'Invalid username/password combination'
+    return "Incorrect Username"
+    
+@app.route('/logout')
+def logout():
+    session.pop("username", None)
+    return redirect(url_for('get_index'))
 
     
     
@@ -42,8 +57,7 @@ def register():
         existing_users = users.find_one({"username":request.form.get("username")})
         
         if existing_users is None:
-            hashpass = bcrypt.hashpw(request.form.get("password").encode('utf-8'), bcrypt.gensalt())
-            users.insert({"username": request.form.get("username"), "password": hashpass})
+            users.insert({"username": request.form.get("username")})
             session["username"] = request.form.get("username")
             return redirect (url_for("get_index"))
         
