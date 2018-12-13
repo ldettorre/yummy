@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template,redirect,request, url_for, session
+from flask import Flask, render_template, redirect, request, url_for, session, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from flask_bcrypt import bcrypt
@@ -20,17 +20,6 @@ def get_index():
         return render_template("index.html")
         
     return render_template("index.html")
-    
-# @app.route("/login", methods=["POST"])
-# def login():
-#     users = mongo.db.users.find()
-#     user_login = request.form.get("username")
-
-#     if user_login in users:
-#             session["username"] = request.form["username"]
-            
-#             return redirect(url_for('get_index'))
-#     return "Incorrect Username"
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -41,7 +30,8 @@ def login():
         if u["username"] == user_login:
             session["username"] = user_login
             return redirect(url_for('get_index'))
-    return "Incorrect Username"
+    flash('This is an incorrect Username.')
+    return redirect(url_for('get_index'))
     
 @app.route('/logout')
 def logout():
@@ -61,7 +51,8 @@ def register():
             session["username"] = request.form.get("username")
             return redirect (url_for("get_index"))
         
-        return "This Username is taken"
+        flash('This Username is unavailable.')
+        return redirect(url_for('register'))
     return render_template("register.html")
         
     

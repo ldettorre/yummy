@@ -18,6 +18,7 @@
             <input type="text" name="recipe_title" id="recipe_title" class="form-control" required/>
         </div>
 
+
         <div class="form-group">
             <label for="recipe_cuisine">Choose Cuisine</label>
             <select class="form-control" id="cuisine" name="recipe_cuisine">
@@ -37,13 +38,13 @@
             <label for="recipe_ingredients">Ingredients</label>
             <textarea name="recipe_ingredients" id="recipe_ingredients" class="form-control" rows "5" required></textarea>
         </div>
-        
+
 
         <div class="form-group">
             <label for="recipe_instructions">Instructions</label>
             <textarea name="recipe_instructions" id="recipe_instructions" class="form-control" rows "5" required></textarea>
         </div>
-        
+
 
         <div class="row">
             <div class="form-group col-sm-4">
@@ -61,23 +62,23 @@
                 <input type="number" name="recipe_cooking_time" id="recipe_cooking_time" class="form-control" placeholder="minutes" min="1" max="9000" required/>
             </div>
         </div>
-            <div class="row">
-                <div class="form-group col-sm-5">
-                    <label for="recipe_difficulty">Difficulty</label>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="recipe_difficulty" id="recipe_difficulty_easy" value="Easy" checked>
-                        <label class="form-check-label" for="recipe_difficulty_easy">Easy</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="recipe_difficulty" id="recipe_difficulty_medium" value="Medium">
-                        <label class="form-check-label" for="recipe_difficulty_medium">Medium</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="recipe_difficulty" id="recipe_difficulty_hard" value="Hard">
-                        <label class="form-check-label" for="recipe_difficulty_hard">Hard</label>
-                    </div>
+        <div class="row">
+            <div class="form-group col-sm-5">
+                <label for="recipe_difficulty">Difficulty</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="recipe_difficulty" id="recipe_difficulty_easy" value="Easy" checked>
+                    <label class="form-check-label" for="recipe_difficulty_easy">Easy</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="recipe_difficulty" id="recipe_difficulty_medium" value="Medium">
+                    <label class="form-check-label" for="recipe_difficulty_medium">Medium</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="recipe_difficulty" id="recipe_difficulty_hard" value="Hard">
+                    <label class="form-check-label" for="recipe_difficulty_hard">Hard</label>
                 </div>
             </div>
+        </div>
         <button type="submit" class="btn btn-submit">Submit Recipe</button>
     </form>
 
