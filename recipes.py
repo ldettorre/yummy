@@ -71,7 +71,13 @@ def get_recipe():
 @app.route("/add_recipe")
 def add_recipe():
     cuisine = mongo.db.cuisine.find()
-    return render_template("add_recipe.html", cuisine=cuisine) 
+    if "username" in session:
+        return render_template("add_recipe.html", cuisine=cuisine) 
+    else: 
+        flash('Please log in to use this feature.')
+        return redirect(url_for('get_index'))
+   
+        
     
     
 @app.route("/insert_recipe", methods=["POST"])
