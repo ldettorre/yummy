@@ -24,7 +24,7 @@
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
             <div>
-                <a href="{{ url_for("register") }}">Sign up here</a>
+                
          
 
             </div>
@@ -36,7 +36,7 @@
         <a href="{{ url_for("logout") }}">Logout</a>
         <p>You are logged in as {{session["username"]}}</p>
         {% else %}
-        
+        <a href="{{ url_for("register") }}">Sign up here</a>
         {% with messages = get_flashed_messages() %} {% if messages %}
         <div class=flashes>
             {% for message in messages %}

@@ -29,7 +29,7 @@ def login():
     for u in users:
         if u["username"] == user_login:
             session["username"] = user_login
-            return redirect(url_for('get_index'))
+            return redirect(url_for("get_userpage", username = user_login))
     flash('This is an incorrect Username.')
     return redirect(url_for('get_index'))
     
@@ -55,6 +55,13 @@ def register():
         return redirect(url_for('register'))
     return render_template("register.html")
         
+        
+@app.route("/<username>") 
+def get_userpage(username):
+    username = session["username"]
+    recipes = mongo.db.recipes.find()
+    return render_template("userpage.html", username=username, recipes=recipes)
+    
     
 
 

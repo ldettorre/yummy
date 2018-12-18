@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>User Profile Page</h2>
+            <p>Welcome {{session["username"]}}</p>
+        </div>
+    </div>
+    <div class="row">
+        {% for recipe in recipes %} {% if recipe.recipe_editor == session["username"] %}
+
+        <div class="col-sm-12">
+            <div id="recipeHeading">
+                <p>{{recipe.recipe_title}}</p>
+            </div>
+        </div>
+        {% endif %}{% endfor %}
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
