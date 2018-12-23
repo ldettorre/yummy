@@ -25,20 +25,26 @@ def get_index():
 def login():
     users = mongo.db.users.find()
     user_login = request.form.get("username")
-
+    names = []
     for u in users:
-        if u["username"] == user_login:
-            session["username"] = user_login
-            return redirect(url_for("get_userpage", username = user_login))
-    flash('This is an incorrect Username.')
-    return redirect(url_for('get_index'))
+        if u['username']:
+            names.append(u['username'])
+    
+    if user_login in names:
+        session["username"] = user_login
+        return redirect(url_for("get_userpage", username=user_login))
+    else:
+        flash("This is an incorrect Username.")
+        return redirect(url_for('get_index'))
+   
+
+    
     
 @app.route('/logout')
 def logout():
     session.pop("username", None)
     return redirect(url_for('get_index'))
 
-    
     
 @app.route("/register", methods=["POST","GET"])
 def register():
@@ -84,8 +90,6 @@ def add_recipe():
         flash('Please log in to use this feature.')
         return redirect(url_for('get_index'))
    
-        
-    
     
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
