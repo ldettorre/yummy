@@ -25,7 +25,8 @@ def get_index():
 def login():
     users = mongo.db.users.find()
     user_login = request.form.get("username")
-    names = []
+    # Credit to Michael Park for helping me solve my login issue below using a list
+    names = [] 
     for u in users:
         if u['username']:
             names.append(u['username'])
