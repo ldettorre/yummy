@@ -9,10 +9,18 @@
         <a href="/get_recipe" class="btn btn-primary">Get Recipe</a>
         <a href="/add_recipe" class="btn btn-primary">Add Recipe</a>
         <a href="/get_cuisines" class="btn btn-primary">Get Cuisines</a>
-        <a href="/add_cuisine" class="btn btn-primary">Add Cuisine</a>
-         {% if session["username"] %}
-         <a href="/userpage.html" class="btn btn-primary">My Profile</a>
-         {% endif %}
+        <a href="/add_cuisine" class="btn btn-primary">Add Cuisine</a> {% if session["username"] %}
+        <a href="/userpage.html" class="btn btn-primary">My Profile</a> {% endif %}
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Cuisine <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">American</a></li>
+            <li><a href="#">Chinese</a></li>
+            <li><a href="#">Irish</a></li>
+            <li><a href="#">More Options</a></li>
+        </ul>
     </div>
 
 
@@ -27,8 +35,8 @@
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
             <div>
-                
-         
+
+
 
             </div>
         </div>
@@ -39,8 +47,7 @@
         <a href="{{ url_for("logout") }}">Logout</a>
         <p>You are logged in as {{session["username"]}}</p>
         {% else %}
-        <a href="{{ url_for("register") }}">Sign up here</a>
-        {% with messages = get_flashed_messages() %} {% if messages %}
+        <a href="{{ url_for("register") }}">Sign up here</a> {% with messages = get_flashed_messages() %} {% if messages %}
         <div class=flashes>
             {% for message in messages %}
             <p>{{message}}</p>
@@ -48,7 +55,8 @@
         </div>
         {% endif %} {% endwith %} {% endif %}
     </div>
+ </div>
 </div>
 
 
-    {% endblock %}
+{% endblock %}
