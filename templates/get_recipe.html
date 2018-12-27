@@ -52,9 +52,12 @@
             <p class="text_format">Instructions: {{recipe.recipe_instructions}}</p>
         </div>
     </div>
+    {% if recipe.recipe_editor == session["username"] %}
 
     <a href="{{url_for("delete_recipe" , recipe_id=recipe._id)}}" class="btn btn-primary edit-recipe-button">Remove Recipe</a>
     <a href="{{url_for("edit_recipe" , recipe_id=recipe._id)}}" class="btn btn-primary edit-recipe-button">Edit Recipe</a>
+     
+    {% endif %}
    
 </div>
 
