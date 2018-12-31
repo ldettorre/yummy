@@ -16,10 +16,12 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def get_index():
+    cuisine = mongo.db.cuisine.find()
     if "username" in session:
-        return render_template("index.html")
+        return render_template("index.html", cuisine = cuisine)
         
-    return render_template("index.html")
+    return render_template("index.html", cuisine = cuisine)
+
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -28,23 +30,23 @@ def login():
     # Credit to Michael Park for helping me solve my login issue below using a list
     names = [] 
     for u in users:
-        if u['username']:
-            names.append(u['username'])
+        if u["username"]:
+            names.append(u["username"])
     
     if user_login in names:
         session["username"] = user_login
         return redirect(url_for("get_userpage", username=user_login))
     else:
         flash("This is an incorrect Username.")
-        return redirect(url_for('get_index'))
+        return redirect(url_for("get_index"))
    
 
     
     
-@app.route('/logout')
+@app.route("/logout")
 def logout():
     session.pop("username", None)
-    return redirect(url_for('get_index'))
+    return redirect(url_for("get_index"))
 
     
 @app.route("/register", methods=["POST","GET"])
@@ -58,8 +60,8 @@ def register():
             session["username"] = request.form.get("username")
             return redirect (url_for("get_index"))
         
-        flash('This Username is unavailable.')
-        return redirect(url_for('register'))
+        flash("This Username is unavailable.")
+        return redirect(url_for("register"))
     return render_template("register.html")
         
         
@@ -88,8 +90,8 @@ def add_recipe():
     if "username" in session:
         return render_template("add_recipe.html", cuisine=cuisine) 
     else: 
-        flash('Please log in to use this feature.')
-        return redirect(url_for('get_index'))
+        flash("Please log in to use this feature.")
+        return redirect(url_for("get_index"))
    
     
 @app.route("/insert_recipe", methods=["POST"])
@@ -136,11 +138,22 @@ def delete_recipe(recipe_id):
     
 #----- Cuisine Functions -----#
 
-@app.route("/get_cuisines")
-def get_cuisines():
-    cuisine = mongo.db.cuisine.find()
-    return render_template("cuisines.html", cuisine=cuisine) 
+@app.route("/get_cuisines/<cuisine_id>")
+def get_cuisines(cuisine_id):
+    recipes = mongo.db.recipes.find()
+    selected_cuisine = mongo.db.cuisine.find_one({"_id": ObjectId(cuisine_id)})
+    selected_cuisine_recipes = []
     
+    for recipe in recipes:
+        if recipe["recipe_cuisine"] == selected_cuisine["recipe_cuisine"]:
+            recipe_details = {
+                "recipe_title": recipe["recipe_title"],
+                "recipe_summary": recipe["recipe_summary"]
+            }
+            selected_cuisine_recipes.append(recipe_details)
+        
+    return render_template("filter_cuisines.html",recipes=recipes, selected_cuisine_recipes=selected_cuisine_recipes ) 
+
     
 @app.route("/add_cuisine")
 def add_cuisine():
@@ -176,7 +189,6 @@ def update_cuisine(cuisine_id):
     return redirect(url_for("get_cuisines"))
 
 
-
-if __name__ == '__main__':
-    app.run(host=os.getenv('IP', '0.0.0.0'), port=int(os.getenv('PORT', 8080)),debug=True)
+if __name__ == "__main__":
+    app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)),debug=True)
     
