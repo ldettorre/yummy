@@ -116,6 +116,7 @@ def update_recipe(recipe_id):
         {"_id":ObjectId(recipe_id)},
     {
         "recipe_title" : request.form.get("recipe_title"),
+        "recipe_author" : request.form.get("recipe_author"),
         "recipe_cuisine" : request.form.get("recipe_cuisine"),
         "recipe_summary" : request.form.get("recipe_summary"),
         "recipe_ingredients" : request.form.get("recipe_ingredients"),
@@ -152,7 +153,7 @@ def get_cuisines(cuisine_id):
             }
             selected_cuisine_recipes.append(recipe_details)
         
-    return render_template("filter_cuisines.html",recipes=recipes, selected_cuisine_recipes=selected_cuisine_recipes ) 
+    return render_template("filter_cuisines.html", recipes=recipes, selected_cuisine_recipes=selected_cuisine_recipes ) 
 
     
 @app.route("/add_cuisine")
