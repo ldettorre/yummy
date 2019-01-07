@@ -56,7 +56,7 @@ def register():
         existing_users = users.find_one({"username":request.form.get("username")})
         
         if existing_users is None:
-            users.insert({"username": request.form.get("username")})
+            users.insert({"username": request.form.get("username"),"authorName": request.form.get("authorName")})
             session["username"] = request.form.get("username")
             return redirect (url_for("get_index"))
         
@@ -98,7 +98,7 @@ def add_recipe():
 def insert_recipe():
     recipes = mongo.db.recipes
     recipes.insert_one(request.form.to_dict())
-    return redirect(url_for("get_recipe")) 
+    return redirect(url_for("get_recipe", recipes=recipes)) 
     
     
 @app.route("/edit_recipe/<recipe_id>")
@@ -139,6 +139,12 @@ def delete_recipe(recipe_id):
     
 #----- Cuisine Functions -----#
 
+@app.route("/list_cuisines")
+def list_cuisines():
+    cuisines = mongo.db.cuisine.find().sort("recipe_cuisine")
+    return render_template("list_cuisines.html", cuisines=cuisines)
+    
+    
 @app.route("/get_cuisines/<cuisine_id>")
 def get_cuisines(cuisine_id):
     recipes = mongo.db.recipes.find()
@@ -166,8 +172,7 @@ def add_cuisine():
 def insert_cuisine():
     cuisines = mongo.db.cuisine
     cuisines.insert_one(request.form.to_dict())
-    return redirect(url_for("get_cuisines"))
-
+    return redirect(url_for("list_cuisines", cuisines=cuisines))
 
 @app.route("/delete_cuisine/<cuisine_id>")
 def delete_cuisine(cuisine_id):
@@ -189,6 +194,38 @@ def update_cuisine(cuisine_id):
         {"recipe_cuisine" : request.form.get("recipe_cuisine")})
     return redirect(url_for("get_cuisines"))
 
+#----- Author Functions -----#
+
+@app.route("/insert_author", methods=["POST"])
+def insert_author():
+   authors = mongo.db.authors
+   authors.insert_one(request.form.to_dict())
+   return redirect(url_for("get_index"))
+
+
+
+@app.route("/all_authors")
+def all_authors():
+    authors = mongo.db.authors.find().sort("recipe_author")
+    return render_template("all_authors.html", authors=authors)
+
+@app.route("/authors_recipes/<author_id>")  
+def authors_recipes(author_id):
+    recipes = mongo.db.recipes.find()
+    selected_author = mongo.db.authors.find_one({"_id":ObjectId(author_id)})
+    selected_authors_recipes = []
+    
+    for recipe in recipes:
+        if recipe["recipe_author"] == selected_author["recipe_author"]:
+            recipe_details = {
+                "recipe_title": recipe["recipe_title"],
+                "recipe_summary": recipe["recipe_summary"]
+            }
+            selected_authors_recipes.append(recipe_details)
+        
+    return render_template("recipe_by_author.html", recipes=recipes, selected_authors_recipes=selected_authors_recipes )
+   
+        
 
 if __name__ == "__main__":
     app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)),debug=True)

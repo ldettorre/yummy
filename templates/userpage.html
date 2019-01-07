@@ -9,13 +9,30 @@
         <a href="/add_recipe" class="btn btn-primary">Add Recipe</a>
 
     </div>
+    
+    <div class="row">
+        <form action="{{ url_for('insert_author') }}" method="POST" class="col-sm-6">
+        <div class="form-group">
+            <label for="recipe_author">RecipeAuthor</label>
+            <input type="text" name="recipe_author" id="recipe_author" class="form-control" required/>
+        </div>
+
+        
+        <button type="submit" class="btn btn-submit">Add Author</button>
+    </form>
+    </div>
+    
+    
+    
+    
+   
     <div class="row">
         {% for recipe in recipes %} {% if recipe.recipe_editor == session["username"] %}
 
         <div class="col-sm-6">
             <div id="recipeHeading">
-                <p>{{recipe.recipe_title}}</p>
-                <p>{{recipe.recipe_summary}}</p>
+                <p>Title: {{recipe.recipe_title}}</p>
+                <p>Summary: {{recipe.recipe_summary}}</p>
             </div>
             <a href="{{url_for("edit_recipe" , recipe_id=recipe._id)}}" class="btn btn-primary edit-recipe-button">Edit Recipe</a> 
             <a href="{{url_for("delete_recipe" , recipe_id=recipe._id)}}" class="btn btn-primary edit-recipe-button">Remove Recipe</a>

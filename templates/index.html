@@ -8,21 +8,13 @@
         </div>
         <a href="/get_recipe" class="btn btn-primary">Get Recipe</a>
         <a href="/add_recipe" class="btn btn-primary">Add Recipe</a>
-        <a href="/get_cuisines" class="btn btn-primary">Get Cuisines</a>
+        <a href="/list_cuisines" class="btn btn-primary">Get Cuisines</a>
         <a href="/add_cuisine" class="btn btn-primary">Add Cuisine</a> 
+        <a href="/all_authors" class="btn btn-primary">Get Authors</a> 
         {% if session["username"] %}
         <a href="/userpage.html" class="btn btn-primary">My Profile</a> 
         {% endif %}
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Cuisine <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-        {% for cuisine in cuisine %}
-            <li><a href="{{ url_for("get_cuisines", cuisine_id = cuisine._id)}}">{{cuisine.recipe_cuisine}}</a></li>
-        {% endfor %}
-        </ul>
-    </div>
+    
     
     
 
