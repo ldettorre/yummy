@@ -11,13 +11,10 @@
     <div class="row text-center">
         {% for cuisine in cuisines %}
         <div class="col-sm-4">
-            <a href="{{ url_for("get_cuisines", cuisine_id = cuisine._id)}}">{{cuisine.recipe_cuisine}}</a>
-        </div>
+            <a href="{{ url_for("get_cuisines", cuisine_id = cuisine._id)}}"> {{ cuisine.recipe_cuisine }} </a>
+            </div> 
         {% endfor %}
-
-
-
-       
+        </div>
     </div>
 </div>
 {% endblock %}

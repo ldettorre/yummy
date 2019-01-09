@@ -78,6 +78,11 @@ def get_userpage(username):
 
 #----- Recipe Functions -----#
 
+@app.route("/show-recipe/<recipe_id>")
+def show_recipe(recipe_id):
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template("show-recipe.html" , recipe=recipe)
+
 @app.route("/get_recipe")
 def get_recipe():
     recipes = mongo.db.recipes.find()
