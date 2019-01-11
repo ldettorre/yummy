@@ -74,8 +74,6 @@ def get_userpage(username):
     
 
 
-
-
 #----- Recipe Functions -----#
 
 @app.route("/show-recipe/<recipe_id>")
@@ -152,19 +150,10 @@ def list_cuisines():
     
 @app.route("/get_cuisines/<cuisine_id>")
 def get_cuisines(cuisine_id):
-    recipes = mongo.db.recipes.find()
     selected_cuisine = mongo.db.cuisine.find_one({"_id": ObjectId(cuisine_id)})
-    selected_cuisine_recipes = []
+    selected_cuisine_recipes = mongo.db.recipes.find({"recipe_cuisine":selected_cuisine["recipe_cuisine"]})
     
-    for recipe in recipes:
-        if recipe["recipe_cuisine"] == selected_cuisine["recipe_cuisine"]:
-            recipe_details = {
-                "recipe_title": recipe["recipe_title"],
-                "recipe_summary": recipe["recipe_summary"]
-            }
-            selected_cuisine_recipes.append(recipe_details)
-        
-    return render_template("filter_cuisines.html", recipes=recipes, selected_cuisine_recipes=selected_cuisine_recipes ) 
+    return render_template("filter_cuisines.html", selected_cuisine_recipes=selected_cuisine_recipes ) 
 
     
 @app.route("/add_cuisine")
@@ -199,6 +188,8 @@ def update_cuisine(cuisine_id):
         {"recipe_cuisine" : request.form.get("recipe_cuisine")})
     return redirect(url_for("get_cuisines"))
 
+
+
 #----- Author Functions -----#
 
 @app.route("/insert_author", methods=["POST"])
@@ -216,19 +207,10 @@ def all_authors():
 
 @app.route("/authors_recipes/<author_id>")  
 def authors_recipes(author_id):
-    recipes = mongo.db.recipes.find()
     selected_author = mongo.db.authors.find_one({"_id":ObjectId(author_id)})
-    selected_authors_recipes = []
-    
-    for recipe in recipes:
-        if recipe["recipe_author"] == selected_author["recipe_author"]:
-            recipe_details = {
-                "recipe_title": recipe["recipe_title"],
-                "recipe_summary": recipe["recipe_summary"]
-            }
-            selected_authors_recipes.append(recipe_details)
+    selected_authors_recipes = mongo.db.recipes.find({"recipe_author":selected_author["recipe_author"]})
         
-    return render_template("recipe_by_author.html", recipes=recipes, selected_authors_recipes=selected_authors_recipes )
+    return render_template("recipe_by_author.html", selected_authors_recipes=selected_authors_recipes )
    
         
 

@@ -2,18 +2,20 @@
 
 <h1> Recipe By Author Page</h1>
 
-
+    <div class="container">
     {% for recipe in selected_authors_recipes %}
      
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <div id="cuisineHeading">
-                        <h3>{{recipe.recipe_title}}</h3>
-                        <p>{{recipe.recipe_summary}}</p>
+                        <h3>Title: {{recipe.recipe_title}}</h3>
+                        <p>Summary: {{recipe.recipe_summary}}</p>
                     </div>
                 </div>
             </div>
+            <a href="{{url_for("show_recipe" , recipe_id=recipe._id)}}" class="btn btn-primary edit-recipe-button">Show Recipe</a>
 
     {% endfor %}
+    </div>
 
 {% endblock %}
