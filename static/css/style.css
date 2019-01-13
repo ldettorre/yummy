@@ -1,6 +1,21 @@
 body {
     max-width: 100%;
     word-wrap: break-word;
+    padding-top:35px;
+}
+
+/*----------Navbar----------*/
+
+.navbar-buttons{
+    padding-right:1%;
+}
+
+.navbar-toggle{
+    background-color:azure;
+}
+
+.navbar-toggle span{
+    background-color:black;
 }
 
 /*----------Get Recipes Page----------*/

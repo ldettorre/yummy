@@ -22,7 +22,11 @@ def get_index():
         
     return render_template("index.html", cuisine = cuisine)
 
-
+@app.route("/go_login")
+def go_login():
+    return render_template("login_page.html")
+    
+    
 @app.route("/login", methods=["POST"])
 def login():
     users = mongo.db.users.find()
@@ -56,7 +60,7 @@ def register():
         existing_users = users.find_one({"username":request.form.get("username")})
         
         if existing_users is None:
-            users.insert({"username": request.form.get("username"),"authorName": request.form.get("authorName")})
+            users.insert({"username": request.form.get("username")})
             session["username"] = request.form.get("username")
             return redirect (url_for("get_index"))
         
