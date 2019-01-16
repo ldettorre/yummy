@@ -5,13 +5,10 @@
     <div class="row">
         {% for author in authors %}
                 <div class="col-sm-12 text-center">
-                    
                         <a href="{{ url_for("authors_recipes", author_id = author._id)}}">{{author.recipe_author}}</a>
-                    
                     </div>
-        {% endfor %}
+         {% endfor %}
                 </div>
-            </div>
             
     
     

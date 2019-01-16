@@ -1,17 +1,12 @@
 {% extends 'base.html' %} {% block content %}
 
-<h2>Edit Cuisine</h2>
-<div class="title">
-    <div class="container">
+
         <div class="row">
             <div class="col-sm-12">
                 <h2>Edit Cuisine</h2>
             </div>
         </div>
-    </div>
-</div>
 
-<div class="container">
     <div class="row">
         <form action="{{ url_for('update_cuisine', cuisine_id=cuisine._id) }}" method="POST" class="col-sm-6">
             <div class="form-group">
@@ -23,7 +18,7 @@
             <button type="submit" class="btn btn-submit" method="POST">Submit Cuisine</button>
         </form>
     </div>
-</div>
+
 
 
 {% endblock %}

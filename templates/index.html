@@ -1,12 +1,62 @@
 {% extends 'base.html' %} {% block content %}
 
 
-<div class="container">
-    <div class="row text-center">
-            <h2>Welcome to The Open Kitchen</h2>
+    <div class="row">
+        <div class="col-sm-6 col-sm-12 text-center landing_text">
+            <p>Try These!</p>
+            <p>5 Fast Recipes!</p>
+
+        </div>
+        <div class="col-sm-5 col-sm-12 landing-img text-center">
+            <img src="../static/img/lemon-chicken.jpg" alt="Lemon Pepper Chicken Dish" width="70%">
+        </div>
+
     </div>
-</div>
+
+    <div class="row cuisine-row">
+        <div class="col-md-3 col-sm-6">
+            <div class="card">
+                <img class="card-img-top" src="../static/img/chinese-food.jpg" alt="Chinese dishes">
+                <div class="card-body">
+                    <h5 class="card-title">Chinese</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt adipisci labore quod atque quaerat rerum tenetur facere sed natus, ipsum!</p>
+                    <a href="#" class="btn btn-primary">Chinese Recipes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="card">
+                <img class="card-img-top" src="../static/img/brazilian-food.jpg" alt="Brazilian dishes">
+                <div class="card-body">
+                    <h5 class="card-title">Brazilian</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt adipisci labore quod atque quaerat rerum tenetur facere sed natus, ipsum!</p>
+                    <a href="#" class="btn btn-primary">Brazilian Recipes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="card">
+                <img class="card-img-top" src="../static/img/italian-food.jpg" alt="Italian dishes">
+                <div class="card-body">
+                    <h5 class="card-title">Italian</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt adipisci labore quod atque quaerat rerum tenetur facere sed natus, ipsum!</p>
+                    <a href="#" class="btn btn-primary">Italian Recipes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="card">
+                <img class="card-img-top" src="../static/img/mexican-food.jpg" alt="Mexican dishes">
+                <div class="card-body">
+                    <h5 class="card-title">Mexican</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt adipisci labore quod atque quaerat rerum tenetur facere sed natus, ipsum!</p>
+                    <a href="#" class="btn btn-primary">Mexican Recipes</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
 
 
 
-{% endblock %}
+    {% endblock %}

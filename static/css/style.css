@@ -6,6 +6,13 @@ body {
 
 /*----------Navbar----------*/
 
+.navbar{
+    background-color:rgb(24,193,238);
+}
+
+.navbar-brand{
+    text-align: center;
+}
 .navbar-buttons{
     padding-right:1%;
 }
@@ -18,11 +25,44 @@ body {
     background-color:black;
 }
 
+.btn-custom {
+    color:white;
+    font-weight: 800;
+}
+
+.custom-brand{
+    color:black;
+    font-weight: 900;
+}
+
+
+/*----------Index Page----------*/
+
+.landing_text{
+    padding-top: 15%;
+    font-size: 25px;
+}
+
+.landing-img{
+    padding-top:7.5%;
+}
+
+.landing-img img{
+    border-radius: 5%;
+}
+
+.card-img-top{
+    width:100%;
+    text-align: center;
+}
+
+.cuisine-row{
+    padding-top:10px;
+}
 /*----------Get Recipes Page----------*/
 
 .edit-recipe-button {
     height: 35px;
-    width: auto;
     margin: 5px;
 }
 
@@ -43,10 +83,30 @@ body {
 }
 
 
-/*----------Media Queries----------*/
+/*---------------Media Queries---------------*/
 
+/*--------All Recipes Page--------*/
 @media (max-width: 768px) {
     .ingredients_padding {
         padding-bottom: 3vh;
     }
+}
+
+
+
+/*--------Index Page--------*/
+@media screen and (max-width: 768px) {
+  .card{
+    padding-top:2%;
+    width:auto;
+    padding-left:5vw;
+    padding-right:5vw;
+    
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .card{
+    padding-top:2%;
+  }
 }

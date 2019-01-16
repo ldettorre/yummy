@@ -98,13 +98,17 @@ def add_recipe():
         return render_template("add_recipe.html", cuisine=cuisine) 
     else: 
         flash("Please log in to use this feature.")
-        return redirect(url_for("get_index"))
+        return render_template("login_page.html")
    
     
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
     recipes = mongo.db.recipes
     recipes.insert_one(request.form.to_dict())
+    # The two lines below copy the recipe author value out of the recipe form and saves it to a seperate
+    # collection called Authors for further uses
+    authors = mongo.db.authors
+    authors.insert_one({"recipe_author" : request.form.get("recipe_author")})
     return redirect(url_for("get_recipe", recipes=recipes)) 
     
     
@@ -134,6 +138,8 @@ def update_recipe(recipe_id):
         "recipe_cooking_time" : request.form.get("recipe_cooking_time")
         
     })
+    authors = mongo.db.authors
+    authors.insert_one({"recipe_author" : request.form.get("recipe_author")})
     return redirect(url_for("get_recipe"))
     
     
