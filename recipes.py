@@ -127,6 +127,7 @@ def update_recipe(recipe_id):
         {"_id":ObjectId(recipe_id)},
     {
         "recipe_title" : request.form.get("recipe_title"),
+        "recipe_editor" : request.form.get("recipe_editor"),
         "recipe_author" : request.form.get("recipe_author"),
         "recipe_cuisine" : request.form.get("recipe_cuisine"),
         "recipe_summary" : request.form.get("recipe_summary"),
@@ -202,18 +203,11 @@ def update_cuisine(cuisine_id):
 
 #----- Author Functions -----#
 
-@app.route("/insert_author", methods=["POST"])
-def insert_author():
-   authors = mongo.db.authors
-   authors.insert_one(request.form.to_dict())
-   return redirect(url_for("get_index"))
-
-
-
 @app.route("/all_authors")
 def all_authors():
     authors = mongo.db.authors.find().sort("recipe_author")
     return render_template("all_authors.html", authors=authors)
+
 
 @app.route("/authors_recipes/<author_id>")  
 def authors_recipes(author_id):
@@ -221,8 +215,6 @@ def authors_recipes(author_id):
     selected_authors_recipes = mongo.db.recipes.find({"recipe_author":selected_author["recipe_author"]})
         
     return render_template("recipe_by_author.html", selected_authors_recipes=selected_authors_recipes )
-   
-        
 
 if __name__ == "__main__":
     app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)),debug=True)
