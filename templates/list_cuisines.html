@@ -18,7 +18,7 @@
 <div class="row text-center">
     {% for cuisine in cuisines %}
     <div class="col-md-3 col-sm-4 col-xs-6">
-        <a href="{{ url_for("get_cuisines", cuisine_id = cuisine._id)}}"> {{cuisine.recipe_cuisine}} </a>
+        <a href="{{ url_for("get_cuisines", cuisine_id = cuisine._id)}}"> {{cuisine.recipe_cuisine.capitalize()}} </a>
     </div>
     {% endfor %}
 </div>

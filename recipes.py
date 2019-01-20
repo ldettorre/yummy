@@ -172,21 +172,15 @@ def add_cuisine():
     return render_template("add_cuisine.html", cuisine=cuisine) 
 
     
-# @app.route("/insert_cuisine", methods=["POST"])
-# def insert_cuisine():
-#     cuisines = mongo.db.cuisine
-#     cuisines.insert_one(request.form.to_dict())
-#     return redirect(url_for("list_cuisines", cuisines=cuisines))
-
 
 @app.route("/insert_cuisine", methods=["POST","GET"])
 def insert_cuisine():
     if request.method == "POST":
         cuisines = mongo.db.cuisine
-        existing_cuisines = cuisines.find_one({"recipe_cuisine":request.form.get("recipe_cuisine")})
+        existing_cuisines = cuisines.find_one({"recipe_cuisine":request.form.get("recipe_cuisine").lower()})
         
         if existing_cuisines is None:
-            cuisines.insert({"recipe_cuisine": request.form.get("recipe_cuisine")})
+            cuisines.insert(({"recipe_cuisine": request.form.get("recipe_cuisine").lower()}))
             return redirect(url_for("list_cuisines", cuisines=cuisines))
         
         flash("This cuisine already exists.")
