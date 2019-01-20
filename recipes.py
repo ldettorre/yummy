@@ -16,11 +16,10 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def get_index():
-    cuisine = mongo.db.cuisine.find()
     if "username" in session:
-        return render_template("index.html", cuisine = cuisine)
+        return render_template("index.html")
         
-    return render_template("index.html", cuisine = cuisine)
+    return render_template("index.html")
 
 @app.route("/go_login")
 def go_login():
@@ -173,22 +172,52 @@ def add_cuisine():
     return render_template("add_cuisine.html", cuisine=cuisine) 
 
     
-@app.route("/insert_cuisine", methods=["POST"])
+# @app.route("/insert_cuisine", methods=["POST"])
+# def insert_cuisine():
+#     cuisines = mongo.db.cuisine
+#     cuisines.insert_one(request.form.to_dict())
+#     return redirect(url_for("list_cuisines", cuisines=cuisines))
+
+
+@app.route("/insert_cuisine", methods=["POST","GET"])
 def insert_cuisine():
-    cuisines = mongo.db.cuisine
-    cuisines.insert_one(request.form.to_dict())
-    return redirect(url_for("list_cuisines", cuisines=cuisines))
+    if request.method == "POST":
+        cuisines = mongo.db.cuisine
+        existing_cuisines = cuisines.find_one({"recipe_cuisine":request.form.get("recipe_cuisine")})
+        
+        if existing_cuisines is None:
+            cuisines.insert({"recipe_cuisine": request.form.get("recipe_cuisine")})
+            return redirect(url_for("list_cuisines", cuisines=cuisines))
+        
+        flash("This cuisine already exists.")
+        return redirect(url_for("list_cuisines"))
+    return render_template("list_cuisines.html")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @app.route("/delete_cuisine/<cuisine_id>")
 def delete_cuisine(cuisine_id):
     mongo.db.cuisine.remove({"_id":ObjectId(cuisine_id)})
     return redirect(url_for("get_cuisines"))
-    
-    
-@app.route("/edit_cuisine/<cuisine_id>") 
-def edit_cuisine(cuisine_id):
-    cuisine = mongo.db.cuisine.find_one({"_id":ObjectId(cuisine_id)})
-    return render_template("edit_cuisine.html", cuisine = cuisine)
     
     
 @app.route("/update_cuisine/<cuisine_id>", methods=["POST"])

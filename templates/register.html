@@ -17,6 +17,8 @@
         </div>
     </div>
     
+    <div class="row">
+        <div class="col-sm-5 col-xs-8 col-xs-offset-2">
         {% with messages = get_flashed_messages() %} {% if messages %}
         <div class=flashes>
             {% for message in messages %}
@@ -24,6 +26,8 @@
             {% endfor %}
         </div>
         {% endif %} {% endwith %} 
+        </div>
+    </div>
 
 
 
