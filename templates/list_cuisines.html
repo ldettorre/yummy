@@ -9,12 +9,13 @@
         {% with messages = get_flashed_messages() %} {% if messages %}
         <div class=flashes>
             {% for message in messages %}
-            <p>{{message}}</p>
+            <p class="cuisine-exists-alert">{{message}}</p>
             {% endfor %}
         </div>
         {% endif %} {% endwith %}
     </div>
 </div>
+
 <div class="row text-center">
     {% for cuisine in cuisines %}
     <div class="col-md-3 col-sm-4 col-xs-6">

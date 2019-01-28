@@ -11,8 +11,8 @@
     <title>Yummy</title>
 </head>
 
-<body class="landing-bg">
-    <!--Basic Bootstrap Navbar from documentation-->
+<body>
+    <!--Basic Bootstrap Navigation from documentation-->
     <nav class="navbar navbar-fixed-top">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -30,7 +30,7 @@
             <li><a href="/list_cuisines" class="btn btn-custom">Cuisines</a></li>
             <li><a href="/all_authors" class="btn btn-custom">Authors</a></li>
             {% if session["username"] %}
-            <li><a href="/userpage.html" class="btn btn-custom">My Profile</a></li> 
+            <li><a href="/userpage" class="btn btn-custom">My Profile</a></li> 
             <li><a href="{{ url_for("logout")}}" class="btn btn-custom">Logout</a></li>
             {% else %}
             <li><a href="{{ url_for("go_login")}}" class="btn btn-custom">Login</a></li>

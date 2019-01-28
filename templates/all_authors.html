@@ -1,10 +1,10 @@
 {% extends 'base.html' %} {% block content %}
     
     <h1>All Authors</h1>
-    
+    <p>There are {{author_total}} authors in our online cook book.</p>
     <div class="row">
         {% for author in authors %}
-                <div class="col-sm-12 text-center">
+                <div class="col-md-3 col-sm-4 col-xs-6">
                         <a href="{{ url_for("authors_recipes", author_id = author._id)}}">{{author.recipe_author}}</a>
                     </div>
          {% endfor %}

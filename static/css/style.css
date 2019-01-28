@@ -1,8 +1,8 @@
 body {
-    max-width: 100%;
     word-wrap: break-word;
     padding-top:35px;
 }
+
 
 /*----------Navbar----------*/
 
@@ -37,11 +37,20 @@ body {
 
 
 /*----------Index Page----------*/
-
-.landing_text{
-    padding-top: 15%;
-    font-size: 25px;
+.row.display-flex {
+  display: flex;
+  flex-wrap: wrap;
 }
+.thumbnail {
+  height: 100%;
+}
+.landing_text{
+    margin-top: 15%;
+    font-size: 50px;
+    font-weight: 900;
+}
+
+
 
 .landing-img{
     padding-top:7.5%;
@@ -52,7 +61,7 @@ body {
 }
 
 .card-img-top{
-    width:100%;
+    width:200px;
     text-align: center;
     border-radius: 5%;
 }
@@ -60,6 +69,7 @@ body {
 .cuisine-row{
     padding-top:10px;
 }
+
 /*----------Get Recipes Page----------*/
 
 .edit-recipe-button {
@@ -84,9 +94,32 @@ body {
 }
 
 
+/*----------List Cuisines Page----------*/
+
+.cuisine-exists-alert{
+    animation: fadein 4s ease-in-out;
+    font-size:25px;
+}
+
+@keyframes fadein {
+    0% { opacity: .9; }
+    20% { opacity: 0; }
+    40% { opacity: .9; }
+    60% { opacity: 0; }
+    80% { opacity: .9; }
+    100% { opacity: 0; }
+}
+
+
+/*----------User Profile Page----------*/
+.user-recipe-section{
+    padding-top: 2%;
+}
+
+
 /*---------------Media Queries---------------*/
 
-/*--------All Recipes Page--------*/
+/*--------Get Recipes Page--------*/
 @media (max-width: 768px) {
     .ingredients_padding {
         padding-bottom: 3vh;
@@ -102,7 +135,6 @@ body {
     width:auto;
     padding-left:5vw;
     padding-right:5vw;
-    
   }
 }
 

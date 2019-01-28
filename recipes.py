@@ -73,7 +73,26 @@ def get_userpage(username):
     username = session["username"]
     recipes = mongo.db.recipes.find()
     return render_template("userpage.html", username=username, recipes=recipes)
+
+@app.route("/mexican_recipes")
+def mexican_recipes():
+    recipes = mongo.db.recipes.find({"recipe_cuisine":"mexican"})
+    return render_template("get_recipe.html", recipes = recipes) 
     
+@app.route("/brazilian_recipes")
+def brazilian_recipes():
+    recipes = mongo.db.recipes.find({"recipe_cuisine":"brazilian"})
+    return render_template("get_recipe.html", recipes = recipes) 
+    
+@app.route("/italian_recipes")
+def italian_recipes():
+    recipes = mongo.db.recipes.find({"recipe_cuisine":"italian"})
+    return render_template("get_recipe.html", recipes = recipes) 
+    
+@app.route("/chinese_recipes")
+def chinese_recipes():
+    recipes = mongo.db.recipes.find({"recipe_cuisine":"chinese"})
+    return render_template("get_recipe.html", recipes = recipes) 
     
 
 
@@ -149,7 +168,6 @@ def delete_recipe(recipe_id):
     return redirect(url_for("get_recipe"))
     
     
-    
 #----- Cuisine Functions -----#
 
 @app.route("/list_cuisines")
@@ -188,26 +206,6 @@ def insert_cuisine():
     return render_template("list_cuisines.html")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @app.route("/delete_cuisine/<cuisine_id>")
 def delete_cuisine(cuisine_id):
     mongo.db.cuisine.remove({"_id":ObjectId(cuisine_id)})
@@ -229,7 +227,8 @@ def update_cuisine(cuisine_id):
 @app.route("/all_authors")
 def all_authors():
     authors = mongo.db.authors.find().sort("recipe_author")
-    return render_template("all_authors.html", authors=authors)
+    author_total = mongo.db.authors.find().sort("recipe_author").count()
+    return render_template("all_authors.html", authors=authors, author_total=author_total)
 
 
 @app.route("/authors_recipes/<author_id>")  

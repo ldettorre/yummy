@@ -1,62 +1,103 @@
 {% extends 'base.html' %} {% block content %}
 
 
-    <div class="row">
-        <div class="col-sm-6 col-sm-12 text-center landing_text">
-            <p>Try These!</p>
-            <p>5 Fast Recipes!</p>
-
-        </div>
-        <div class="col-sm-5 col-sm-12 landing-img text-center">
-            <img src="../static/img/lemon-chicken.jpg" alt="Lemon Pepper Chicken Dish" width="70%">
-        </div>
-
+<div class="row">
+    <div class="col-sm-6 col-sm-12 landing_text text-position responsive-landing">
+        <p class="title-text">Try These Fast Recipes!</p>
     </div>
-
-    <div class="row cuisine-row">
-        <div class="col-md-3 col-sm-6">
-            <div class="card">
-                <img class="card-img-top" src="../static/img/chinese-food.jpg" alt="Chinese dishes">
-                <div class="card-body">
-                    <h5 class="card-title">Chinese</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt adipisci labore quod atque quaerat rerum tenetur facere sed natus, ipsum!</p>
-                    <a href="#" class="btn btn-primary">Chinese Recipes</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-            <div class="card">
-                <img class="card-img-top" src="../static/img/brazilian-food.jpg" alt="Brazilian dishes">
-                <div class="card-body">
-                    <h5 class="card-title">Brazilian</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt adipisci labore quod atque quaerat rerum tenetur facere sed natus, ipsum!</p>
-                    <a href="#" class="btn btn-primary">Brazilian Recipes</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-            <div class="card">
-                <img class="card-img-top" src="../static/img/italian-food.jpg" alt="Italian dishes">
-                <div class="card-body">
-                    <h5 class="card-title">Italian</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt adipisci labore quod atque quaerat rerum tenetur facere sed natus, ipsum!</p>
-                    <a href="#" class="btn btn-primary">Italian Recipes</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-            <div class="card">
-                <img class="card-img-top" src="../static/img/mexican-food.jpg" alt="Mexican dishes">
-                <div class="card-body">
-                    <h5 class="card-title">Mexican</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt adipisci labore quod atque quaerat rerum tenetur facere sed natus, ipsum!</p>
-                    <a href="#" class="btn btn-primary">Mexican Recipes</a>
-                </div>
-            </div>
-        </div>
-        
+    <div class="col-sm-5 col-sm-12 landing-img responsive-landing text-center ">
+        <img src="../static/img/lemon-chicken.jpg" alt="Lemon Pepper Chicken Dish" width="70%">
     </div>
+</div>
+
+<!--<div class="row cuisine-row">-->
+<!--    <div class="col-md-3 col-sm-6">-->
+<!--        <div class="card">-->
+<!--            <img class="card-img-top" src="../static/img/chinese-food.jpg" alt="Chinese dishes">-->
+<!--            <div class="card-body">-->
+<!--                <h5 class="card-title">Chinese</h5>-->
+<!--                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt adipisci labore quod atque quaerat rerum tenetur facere sed natus, ipsum!</p>-->
+<!--                <a href="{{url_for("chinese_recipes")}}" class="btn btn-primary">Chinese Recipes</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="col-md-3 col-sm-6">-->
+<!--        <div class="card">-->
+<!--            <img class="card-img-top" src="../static/img/brazilian-food.jpg" alt="Brazilian dishes">-->
+<!--            <div class="card-body">-->
+<!--                <h5 class="card-title">Brazilian</h5>-->
+<!--                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt adipisci labore quod atque quaerat rerum tenetur facere sed natus, ipsum!</p>-->
+<!--                <a href="{{url_for("brazilian_recipes")}}" class="btn btn-primary">Brazilian Recipes</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="col-md-3 col-sm-6">-->
+<!--        <div class="card">-->
+<!--            <img class="card-img-top" src="../static/img/italian-food.jpg" alt="Italian dishes">-->
+<!--            <div class="card-body">-->
+<!--                <h5 class="card-title">Italian</h5>-->
+<!--                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt adipisci labore quod atque quaerat rerum tenetur facere sed natus, ipsum!</p>-->
+<!--                <a href="{{url_for("italian_recipes")}}" class="btn btn-primary">Italian Recipes</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="col-md-3 col-sm-6">-->
+<!--        <div class="card">-->
+<!--            <img class="card-img-top" src="../static/img/mexican-food.jpg" alt="Mexican dishes">-->
+<!--            <div class="card-body">-->
+<!--                <h5 class="card-title">Mexican</h5>-->
+<!--                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt adipisci labore quod atque quaerat rerum tenetur facere sed natus, ipsum!</p>-->
+<!--                <a href="{{url_for("mexican_recipes")}}" class="btn btn-primary">Mexican Recipes</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--</div>-->
+<p>Count test:{{xyz}}</p>
+<div class="row display-flex">
+    <div class="col-sm-6 col-md-3 ">
+        <div class="thumbnail">
+            <img src="../static/img/italian-food.jpg" alt="...">
+            <div class="caption">
+                <h3>Italian</h3>
+                
+                <p>Traditional Central Italian cuisine uses ingredients such as tomatoes, all kinds of meat, fish, and pecorino cheese. In Tuscany, pasta (especially pappardelle) is traditionally served with meat sauce (including game meat).</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <img src="../static/img/mexican-food.jpg" alt="...">
+            <div class="caption">
+                <h3>Mexican</h3>
+                <p>Mexican food has some of the most well-known and loved dishes in the world. Mexican cuisine varies by region due to local climate, geography and ethnic differences among the indigenous inhabitants.</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <img src="../static/img/brazilian-food.jpg" alt="...">
+            <div class="caption">
+                <h3>Brazilian</h3>
+                <p>Brazilian cuisine is the set of cooking practices and traditions of Brazil, and is characterized by African, Amerindian, Asian and European influences. It varies greatly by region, reflecting the country's mix of populations, and its continental size as well.</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <img src="../static/img/chinese-food.jpg" alt="...">
+            <div class="caption">
+                <h3>Chinese</h3>
+                <p>Chinese food staples such as rice, soy sauce and noodles can now be found worldwide. Color, smell and taste are the three traditional aspects used to describe Chinese food, as well as the meaning, appearance and nutrition of the food</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
-    {% endblock %}
+{% endblock %}
