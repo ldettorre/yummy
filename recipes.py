@@ -40,7 +40,7 @@ def login():
         session["username"] = user_login
         return redirect(url_for("get_userpage", username=user_login))
     else:
-        flash("This is an incorrect Username.")
+        flash("This is an incorrect username.")
         return redirect(url_for("get_index"))
    
 
@@ -64,8 +64,8 @@ def register():
             return redirect (url_for("get_index"))
         
         flash("This Username is unavailable.")
-        return redirect(url_for("register"))
-    return render_template("register.html")
+        return redirect(url_for("get_index"))
+    return render_template("index.html")
         
         
 @app.route("/<username>") 
@@ -116,7 +116,7 @@ def add_recipe():
         return render_template("add_recipe.html", cuisine=cuisine) 
     else: 
         flash("Please log in to use this feature.")
-        return render_template("login_page.html")
+        return render_template("index.html")
    
     
 @app.route("/insert_recipe", methods=["POST"])

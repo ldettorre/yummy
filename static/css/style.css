@@ -2,12 +2,10 @@ body {
     word-wrap: break-word;
     padding-top:35px;
 }
-
-
 /*----------Navbar----------*/
 
 .navbar{
-    background-color:rgb(24,193,238);
+    background-image:linear-gradient(-90deg,rgb(94,50,17),rgb(76,60,48));
 }
 
 .navbar-brand{
@@ -25,21 +23,35 @@ body {
     background-color:black;
 }
 
-.btn-custom {
+.navbar-btn {
     color:white;
     font-weight: 800;
 }
 
 .custom-brand{
-    color:black;
+    color:white;
     font-weight: 900;
+    
 }
 
 
 /*----------Footer----------*/
+
 footer {
-    background-color:rgb(24,193,238);
+    background-image:linear-gradient(-90deg,rgb(94,50,17),rgb(76,60,48));
+    color:white;
 }
+
+
+/*----------Login/Register Function Styling----------*/
+.flashes{
+    color:white;
+}
+
+.register-link{
+    color:white;
+}
+
 
 /*----------Index Page----------*/
 
@@ -115,6 +127,7 @@ footer {
 
 
 
+
 /*---------------Media Queries---------------*/
 
 /*--------Get Recipes Page--------*/
@@ -140,4 +153,16 @@ footer {
   .card{
     padding-top:2%;
   }
+}
+
+
+
+.modal-content{
+   margin-top:200px;
+}
+
+.btn-custom{
+    color:rgb(123,79,53);
+    background-color: rgb(248,196,71);
+    font-weight: bold;
 }

@@ -3,15 +3,75 @@
 
 
 
-  
+ <!-- Landing Page Jumbotron & Login/Register Features -->
 <div class="jumbotron jumbo-image">
+    {% if session["username"] %}
+    <h1 class="jumbo-text">Welcome {{session["username"]}}!</h1>
+    {% else %}
     <h1 class="jumbo-text">Welcome to Yummy!</h1>
-        <p>...</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Find your feast!</a></p>
+    {% endif %}
+    
+        <a class="btn btn-custom" href="/get_recipe" role="button">Find your feast!</a>
+        
+<!-- Login -->
+        {% if session["username"] %}
+        <a class="btn btn-custom" href="{{ url_for("logout") }}" role="button">Logout</a>
+        {% else %}
+        <a class="btn btn-custom" role="button" data-toggle="modal" data-target="#loginModal">Login</a>
+        <a class="register-link" data-toggle="modal" data-target="#registerModal">Register here</a> 
+        {% with messages = get_flashed_messages() %} {% if messages %}
+        <div class=flashes>
+            {% for message in messages %}
+            <p>{{message}}</p>
+            {% endfor %}
+        </div>
+        {% endif %} {% endwith %} {% endif %}
+</div>
+
+
+<!-- Login - Modal feature from Bootstrap Documentation -->
+<div class="modal fade modal-position" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content col-sm-6">
+      <div class="modal-body">
+        <form action="{{ url_for('login') }}" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" class="form-control" required>
+                </div>
+                <button type="button" class="btn btn-custom" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-custom">Login</button>
+            </form>
+     </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Registration - Modal feature from Bootstrap Documentation -->
+<div class="modal fade modal-position" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content col-sm-6">
+      <div class="modal-body">
+        <form action="{{ url_for('register') }}" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" class="form-control" required>
+                </div>
+                <button type="button" class="btn btn-custom" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-custom">Register</button>
+            </form>
+            <div>
+                <a data-dismiss="modal" data-toggle="modal" data-target="#loginModal" >Already registered?</a>
+            </div>
+     </div>
+    </div>
+  </div>
 </div>
 
 
 
+<!-- Cuisine Thumbnails -->
 <div class="row cuisine-row">
     <div class="col-md-3 col-sm-6">
         <div class="card">
@@ -19,7 +79,7 @@
             <div class="card-body">
                 <h5 class="card-title">Chinese</h5>
                 <p class="card-text">Chinese food staples such as rice, soy sauce and noodles can now be found worldwide. Color, smell and taste are the three traditional aspects used to describe Chinese food, as well as the meaning, appearance and nutrition of the food.</p>
-                <a href="{{url_for("chinese_recipes")}}" class="btn btn-primary">Chinese Recipes</a>
+                <a href="{{url_for("chinese_recipes")}}" class="btn btn-custom">Chinese Recipes</a>
             </div>
         </div>
     </div>
@@ -29,7 +89,7 @@
             <div class="card-body">
                 <h5 class="card-title">Brazilian</h5>
                 <p class="card-text">Brazilian cuisine is the set of cooking practices and traditions of Brazil, and is characterized by African, Amerindian, Asian and European influences. It varies greatly by region, reflecting the country's mix of populations, and its continental size as well.</p>
-                <a href="{{url_for("brazilian_recipes")}}" class="btn btn-primary">Brazilian Recipes</a>
+                <a href="{{url_for("brazilian_recipes")}}" class="btn btn-custom">Brazilian Recipes</a>
             </div>
         </div>
     </div>
@@ -39,7 +99,7 @@
             <div class="card-body">
                 <h5 class="card-title">Italian</h5>
                 <p class="card-text">Traditional Central Italian cuisine uses ingredients such as tomatoes, all kinds of meat, fish, and pecorino cheese. In Tuscany, pasta (especially pappardelle) is traditionally served with meat sauce (including game meat).</p>
-                <a href="{{url_for("italian_recipes")}}" class="btn btn-primary">Italian Recipes</a>
+                <a href="{{url_for("italian_recipes")}}" class="btn btn-custom">Italian Recipes</a>
             </div>
         </div>
     </div>
@@ -49,55 +109,12 @@
             <div class="card-body">
                 <h5 class="card-title">Mexican</h5>
                 <p class="card-text">Mexican food has some of the most well-known and loved dishes in the world. Mexican cuisine varies by region due to local climate, geography and ethnic differences among the indigenous inhabitants.</p>
-                <a href="{{url_for("mexican_recipes")}}" class="btn btn-primary">Mexican Recipes</a>
+                <a href="{{url_for("mexican_recipes")}}" class="btn btn-custom">Mexican Recipes</a>
             </div>
         </div>
     </div>
 
 </div>
-<!--<div class="row display-flex">-->
-<!--    <div class="col-sm-6 col-md-3 ">-->
-<!--        <div class="thumbnail">-->
-<!--            <img src="../static/img/italian-food.jpg" alt="...">-->
-<!--            <div class="caption">-->
-<!--                <h3>Italian</h3>-->
-                
-<!--                <p>Traditional Central Italian cuisine uses ingredients such as tomatoes, all kinds of meat, fish, and pecorino cheese. In Tuscany, pasta (especially pappardelle) is traditionally served with meat sauce (including game meat).</p>-->
-<!--                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="col-sm-6 col-md-3">-->
-<!--        <div class="thumbnail">-->
-<!--            <img src="../static/img/mexican-food.jpg" alt="...">-->
-<!--            <div class="caption">-->
-<!--                <h3>Mexican</h3>-->
-<!--                <p>Mexican food has some of the most well-known and loved dishes in the world. Mexican cuisine varies by region due to local climate, geography and ethnic differences among the indigenous inhabitants.</p>-->
-<!--                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="col-sm-6 col-md-3">-->
-<!--        <div class="thumbnail">-->
-<!--            <img src="../static/img/brazilian-food.jpg" alt="...">-->
-<!--            <div class="caption">-->
-<!--                <h3>Brazilian</h3>-->
-<!--                <p>Brazilian cuisine is the set of cooking practices and traditions of Brazil, and is characterized by African, Amerindian, Asian and European influences. It varies greatly by region, reflecting the country's mix of populations, and its continental size as well.</p>-->
-<!--                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="col-sm-6 col-md-3">-->
-<!--        <div class="thumbnail">-->
-<!--            <img src="../static/img/chinese-food.jpg" alt="...">-->
-<!--            <div class="caption">-->
-<!--                <h3>Chinese</h3>-->
-<!--                <p>Chinese food staples such as rice, soy sauce and noodles can now be found worldwide. Color, smell and taste are the three traditional aspects used to describe Chinese food, as well as the meaning, appearance and nutrition of the food</p>-->
-<!--                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 
 
 
