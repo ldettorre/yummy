@@ -33,11 +33,56 @@
             <li><a href="/userpage" class="btn navbar-btn">My Profile</a></li> 
             <li><a href="{{ url_for("logout")}}" class="btn navbar-btn">Logout</a></li>
             {% else %}
-            <li><a href="{{ url_for("go_login")}}" class="btn navbar-btn">Login</a></li>
+            <li><a href="" class="btn navbar-btn" data-toggle="modal" data-target="#loginModal">Login</a></li>
+            <li><a href="" class="btn navbar-btn" data-toggle="modal" data-target="#registerModal">Register</a></li>
             {% endif %}
           </ul>
         </div>
     </nav>
+    
+    
+<!-- Login - Modal feature from Bootstrap Documentation -->
+<div class="modal fade modal-position" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content col-sm-6">
+      <div class="modal-body">
+        <form action="{{ url_for('login') }}" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" class="form-control" required>
+                </div>
+                <button type="button" class="btn btn-custom" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-custom">Login</button>
+            </form>
+     </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Registration - Modal feature from Bootstrap Documentation -->
+<div class="modal fade modal-position" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content col-sm-6">
+      <div class="modal-body">
+        <form action="{{ url_for('register') }}" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" class="form-control" required>
+                </div>
+                <button type="button" class="btn btn-custom" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-custom">Register</button>
+            </form>
+            <div>
+                <a data-dismiss="modal" data-toggle="modal" data-target="#loginModal" >Already registered?</a>
+            </div>
+     </div>
+    </div>
+  </div>
+</div>
+
+    
+    
     <div class="container">
 
     {% block content %}
@@ -46,7 +91,7 @@
     </div>
     
     <footer>
-        <div class="container footer">
+        <div class="container">
             <div class="row text-center">
                 <p>Designed by:</p>
                 <p>Luca D'Ettorre</p>

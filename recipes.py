@@ -21,11 +21,6 @@ def get_index():
         
     return render_template("index.html")
 
-@app.route("/go_login")
-def go_login():
-    return render_template("login_page.html")
-    
-    
 @app.route("/login", methods=["POST"])
 def login():
     users = mongo.db.users.find()

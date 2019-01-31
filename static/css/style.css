@@ -1,7 +1,10 @@
 body {
     word-wrap: break-word;
-    padding-top:35px;
+    padding-top:68px;
 }
+
+
+
 /*----------Navbar----------*/
 
 .navbar{
@@ -52,6 +55,16 @@ footer {
     color:white;
 }
 
+.modal-content{
+   margin-top:200px;
+}
+
+.btn-custom{
+    color:rgb(123,79,53);
+    background-color: rgb(248,196,71);
+    font-weight: bold;
+}
+
 
 /*----------Index Page----------*/
 
@@ -75,6 +88,7 @@ footer {
     text-align: center;
     margin-bottom:43px;
 }
+
 
 /*----------Get Recipes Page----------*/
 
@@ -122,6 +136,9 @@ footer {
     padding-top: 2%;
 }
 
+.profile-recipe{
+    padding:10px;
+}
 
 
 
@@ -157,12 +174,3 @@ footer {
 
 
 
-.modal-content{
-   margin-top:200px;
-}
-
-.btn-custom{
-    color:rgb(123,79,53);
-    background-color: rgb(248,196,71);
-    font-weight: bold;
-}
