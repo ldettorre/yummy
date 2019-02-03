@@ -1,68 +1,61 @@
 {% extends 'base.html' %} {% block content %}
 
-
-    <div class="row">
-        <h1>Selected Recipe Page</h1>
-    </div>
+<div class="container">
+    <div class="col-sm-5 white-bg-styling">
+        <div class="col-sm-12">
+            <h1>{{recipe.recipe_title}}</h1>
+        </div>
+        
     
     
-
-    <div class="row">
-        <div class="col-sm-12 text-center">
-            <div id="recipeHeading">
-                <h1>{{recipe.recipe_title}}</h1>
-                <p>Submitted by: {{recipe.recipe_author}}</p>
+        <div class="row">
+            <div class="col-sm-12 ">
+                <p>Cuisine: {{recipe.recipe_cuisine}}</p>
+            </div>
+            <div class="col-sm-12">
+                <p>Difficulty: {{recipe.recipe_difficulty}}</p>
             </div>
         </div>
+    
+        <div class="row">
+            <div class="col-sm-12">
+                <p>Serves: {{recipe.recipe_portion}}</p>
+            </div>
+            <div class="col-sm-12">
+                <p>Preparation: {{recipe.recipe_preparation_time}} minutes</p>
+            </div>
+            <div class="col-sm-12">
+                <p>Cooking Time: {{recipe.recipe_cooking_time}} minutes</p>
+            </div>
+        </div>
+        
+        <br>
+    
+        <div class="row">
+            <div class="col-sm-12">
+                <p class="text_format">Summary: {{recipe.recipe_summary}}</p>
+            </div>
+        </div>
+        
+        <br>
+        
+        <div class="row">
+            <div class="col-sm-12 ingredients_padding">
+                <p class="text_format">Ingredients: {{recipe.recipe_ingredients}}</p>
+            </div>
+            <div class="col-sm-12">
+                <p class="text_format">Instructions: {{recipe.recipe_instructions}}</p>
+            </div>
+        </div>
+        
+        {% if recipe.recipe_editor == session["username"] %}
+    
+        <a href="{{url_for("delete_recipe" , recipe_id=recipe._id)}}" class="btn btn-primary edit-recipe-button">Remove Recipe</a>
+        <a href="{{url_for("edit_recipe" , recipe_id=recipe._id)}}" class="btn btn-primary edit-recipe-button">Edit Recipe</a>
+        
+        {% endif %}
     </div>
-
-    <div class="row text-center">
-        <div class="col-sm-6 ">
-            <p>Cuisine: {{recipe.recipe_cuisine}}</p>
-        </div>
-        <div class="col-sm-6">
-            <p>Difficulty: {{recipe.recipe_difficulty}}</p>
-        </div>
-    </div>
-
-    <div class="row text-center">
-        <div class="col-sm-4 col-xs-4">
-            <p>Serves: {{recipe.recipe_portion}}</p>
-        </div>
-        <div class="col-sm-4 col-xs-4">
-            <p>Preparation: {{recipe.recipe_preparation_time}} minutes</p>
-        </div>
-        <div class="col-sm-4 col-xs-4">
-            <p>Cooking Time: {{recipe.recipe_cooking_time}} minutes</p>
-        </div>
-    </div>
-    
-    <br>
-
-    <div class="row text-center">
-        <div class="col-sm-12">
-            <p class="text_format">Summary: {{recipe.recipe_summary}}</p>
-        </div>
-    </div>
-    
-    <br>
-    
-    <div class="row text-center">
-        <div class="col-sm-6 col-xs-12 ingredients_padding">
-            <p class="text_format">Ingredients: {{recipe.recipe_ingredients}}</p>
-        </div>
-        <div class="col-sm-6 col-xs-12">
-            <p class="text_format">Instructions: {{recipe.recipe_instructions}}</p>
-        </div>
-    </div>
-    
-    {% if recipe.recipe_editor == session["username"] %}
-
-    <a href="{{url_for("delete_recipe" , recipe_id=recipe._id)}}" class="btn btn-primary edit-recipe-button">Remove Recipe</a>
-    <a href="{{url_for("edit_recipe" , recipe_id=recipe._id)}}" class="btn btn-primary edit-recipe-button">Edit Recipe</a>
-    
-    {% endif %}
-    
+</div>  
 
 
 {% endblock %}

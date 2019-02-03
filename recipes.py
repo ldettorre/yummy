@@ -101,7 +101,8 @@ def show_recipe(recipe_id):
 @app.route("/get_recipe")
 def get_recipe():
     recipes = mongo.db.recipes.find()
-    return render_template("get_recipe.html", recipes=recipes)
+    recipes_total = mongo.db.recipes.find().sort("recipe_title").count()
+    return render_template("get_recipe.html", recipes=recipes,recipes_total=recipes_total)
     
 
 @app.route("/add_recipe")

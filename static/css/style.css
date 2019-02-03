@@ -1,8 +1,14 @@
 body {
     word-wrap: break-word;
-    padding-top:68px;
 }
 
+.main-bg{
+    background-image: url(../img/recipes-bg.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top:80px;
+    
+}
 
 
 /*----------Navbar----------*/
@@ -74,9 +80,11 @@ footer {
     margin-top:40px;
     background-position: bottom;
 }
+
 .jumbo-text{
     color: white !important;
 }
+
 .card-img-top{
     width:200px;
     text-align: center;
@@ -89,6 +97,12 @@ footer {
     margin-bottom:43px;
 }
 
+.card{
+    background-color: white;
+    border-radius: 10px;
+    padding-top:5px;
+    padding-bottom:5px;
+}
 
 /*----------Get Recipes Page----------*/
 
@@ -97,7 +111,16 @@ footer {
     margin: 5px;
 }
 
+/*The below class allows the text on recipes page to begin hidden before users click on instructions/ingredients*/
+.initiallyHidden { 
+    display: none; 
+}
 
+.white-bg-styling{
+    background-color: white;
+    margin: 10px 5px 10px 5px;
+    border-radius: 10px;
+}
 /*----------ADD Recipes Page----------*/
 
 .title {
@@ -107,6 +130,13 @@ footer {
 
 .form-control {
     resize: vertical;
+}
+
+.recipe_form{
+    margin-bottom:25px;
+    border-radius: 10px;
+    background-color: white;
+    padding:10px 10px 10px 10px;
 }
 
 .text_format {

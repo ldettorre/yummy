@@ -1,20 +1,20 @@
 {% extends 'base.html' %} {% block content %}
 
-<h2>Add Cuisine</h2>
-<div class="title">
-        <div class="row">
-            <div class="col-sm-12">
-                <h2>Add Cuisine</h2>
-            </div>
-        </div>
-</div>
-    <form action="{{ url_for('insert_cuisine') }}" method="POST" class="col-sm-6">
-        <div class="form-group">
-            <label for="recipe_cuisine">Recipe Cuisine</label>
-            <input type="text" name="recipe_cuisine" id="recipe_cuisine" class="form-control" required/>
-        </div>
-        <button type="submit" class="btn btn-submit">Add Cuisine</button>
-    </form>
 
+<div class="container">
+    <div class=" col-sm-6 white-bg-styling">
+        <h2>Add Cuisine</h2>
+
+
+
+        <form action="{{ url_for('insert_cuisine') }}" method="POST">
+            <div class="form-group">
+                <label for="recipe_cuisine">Recipe Cuisine</label>
+                <input type="text" name="recipe_cuisine" id="recipe_cuisine" class="form-control" required/>
+            </div>
+            <button type="submit" class="btn btn-submit">Add Cuisine</button>
+        </form>
+    </div>
+</div>
 
 {% endblock %}
