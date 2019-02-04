@@ -143,6 +143,7 @@ def update_recipe(recipe_id):
         "recipe_title" : request.form.get("recipe_title"),
         "recipe_editor" : request.form.get("recipe_editor"),
         "recipe_author" : request.form.get("recipe_author"),
+        "recipe_status" : request.form.get("recipe_status"),
         "recipe_cuisine" : request.form.get("recipe_cuisine"),
         "recipe_summary" : request.form.get("recipe_summary"),
         "recipe_ingredients" : request.form.get("recipe_ingredients"),

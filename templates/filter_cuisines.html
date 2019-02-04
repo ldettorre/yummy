@@ -1,29 +1,23 @@
 {% extends 'base.html' %} {% block content %}
 
-    
-    
-  
-    
-    <h2>Filtered Recipes</h2>
-    {% for recipe in selected_cuisine_recipes %}
-     
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    <div id="cuisineHeading">
-                        <h3>{{recipe.recipe_title}}</h3>
-                        <p>{{recipe.recipe_summary}}</p>
-                    </div>
-                </div>
-            </div>
+
+
+<div class="container">
+    <div class="row">
+        <div class=" col-sm-6 white-bg-styling">
+            <h2>Filtered Recipes</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class=" col-sm-6 white-bg-styling">
+            {% for recipe in selected_cuisine_recipes %}
+            <h3>{{recipe.recipe_title}}</h3>
+            <p>{{recipe.recipe_summary}}</p>
+
             <a href="{{url_for("show_recipe" , recipe_id=recipe._id)}}" class="btn btn-primary edit-recipe-button">Show Recipe</a>
-            
-    {% endfor %}
-    
-    
-{% endblock %}
-    
-    
-    
-    
-    
-   
+        </div>
+    </div>
+</div>
+
+
+{% endfor %} {% endblock %}

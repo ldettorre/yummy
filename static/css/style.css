@@ -3,11 +3,10 @@ body {
 }
 
 .main-bg{
-    background-image: url(../img/recipes-bg.jpg);
+    background-image: url(../img/mainbg.jpg);
     background-size: cover;
     background-attachment: fixed;
     padding-top:80px;
-    
 }
 
 
@@ -119,6 +118,7 @@ footer {
 .white-bg-styling{
     background-color: white;
     margin: 10px 5px 10px 5px;
+    padding-bottom:10px;
     border-radius: 10px;
 }
 /*----------ADD Recipes Page----------*/

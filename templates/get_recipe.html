@@ -4,6 +4,7 @@
 
     
     {% for recipe in recipes %}
+        {% if recipe.recipe_status == "public" %}
         <div class="row">
             <div class="col-sm-6 white-bg-styling">
                 <div id="recipeHeading">
@@ -70,4 +71,5 @@
   
 
 
-{% endfor %} {% endblock %}
+
+{% endif %}{% endfor %} {% endblock %}

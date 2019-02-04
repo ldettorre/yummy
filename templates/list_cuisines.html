@@ -1,28 +1,28 @@
 {% extends 'base.html' %} {% block content %}
 
 
-
-<div class="row">
-    <div class="col-sm-12 text-center">
-        <h1>Cuisine Page</h1>
-        <p>Don't see a cusine you like? Add it <a href="/add_cuisine">here</a> for future recipe additions.</p>
-        {% with messages = get_flashed_messages() %} {% if messages %}
-        <div class=flashes>
-            {% for message in messages %}
-            <p class="cuisine-exists-alert">{{message}}</p>
-            {% endfor %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 white-bg-styling">
+            <h1>Cuisine Page</h1>
+            <p>Don't see a cusine you like? Add it <a href="/add_cuisine">here</a> for future recipe additions.</p>
+            {% with messages = get_flashed_messages() %} {% if messages %}
+            <div class=flashes>
+                {% for message in messages %}
+                <p class="cuisine-exists-alert">{{message}}</p>
+                {% endfor %}
+            </div>
+            {% endif %} {% endwith %}
         </div>
-        {% endif %} {% endwith %}
+    </div>
+
+    <div class="row text-center">
+        {% for cuisine in cuisines %}
+        <div class="col-md-3 col-sm-4 col-xs-6">
+            <a href="{{ url_for("get_cuisines", cuisine_id = cuisine._id)}}"> {{cuisine.recipe_cuisine.capitalize()}} </a>
+        </div>
+        {% endfor %}
     </div>
 </div>
-
-<div class="row text-center">
-    {% for cuisine in cuisines %}
-    <div class="col-md-3 col-sm-4 col-xs-6">
-        <a href="{{ url_for("get_cuisines", cuisine_id = cuisine._id)}}"> {{cuisine.recipe_cuisine.capitalize()}} </a>
-    </div>
-    {% endfor %}
-</div>
-
 
 {% endblock %}
