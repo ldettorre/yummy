@@ -21,7 +21,7 @@
         <a class="register-link" data-toggle="modal" data-target="#registerModal">Register here</a> {% with messages = get_flashed_messages() %} {% if messages %}
         <div class=flashes>
             {% for message in messages %}
-            <p>{{message}}</p>
+            <p class="flash-alert">{{message}}</p>
             {% endfor %}
         </div>
         {% endif %} {% endwith %} {% endif %}

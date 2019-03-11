@@ -151,9 +151,10 @@ footer {
 
 /*----------List Cuisines Page----------*/
 
-.cuisine-exists-alert{
+.flash-alert{
     animation: fadein 4s ease-in-out;
-    font-size:25px;
+    font-size: 20px;
+    color: white;
 }
 
 @keyframes fadein {

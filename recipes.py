@@ -223,15 +223,14 @@ def update_cuisine(cuisine_id):
 
 @app.route("/all_authors")
 def all_authors():
-    authors = mongo.db.authors.find().sort("recipe_author")
-    author_total = mongo.db.authors.find().sort("recipe_author").count()
-    return render_template("all_authors.html", authors=authors, author_total=author_total)
+    authors = sorted(mongo.db.recipes.distinct("recipe_author"))
+    # author_total = len(authors)
+    return render_template("all_authors.html", authors=authors)
 
 
-@app.route("/authors_recipes/<author_id>")  
-def authors_recipes(author_id):
-    selected_author = mongo.db.authors.find_one({"_id":ObjectId(author_id)})
-    selected_authors_recipes = mongo.db.recipes.find({"recipe_author":selected_author["recipe_author"]})
+@app.route("/authors_recipes/<author>")  
+def authors_recipes(author):
+    selected_authors_recipes = mongo.db.recipes.find({"recipe_author": author})
         
     return render_template("recipe_by_author.html", selected_authors_recipes=selected_authors_recipes )
 

@@ -3,6 +3,8 @@
     <div class=" col-sm-6 white-bg-styling">
      
         <h2>Add Recipe</h2>
+        <p> Here you can add recipes which will automatically be displayed on your profile page. You can also make them public or private.
+        If you do not see your required cuisine for selection, head on over <a href="/add_cuisine">here</a> to add it to our site.</p>
      
         <form action="{{ url_for('insert_recipe') }}" method="POST">
             <div class="form-group">
@@ -37,18 +39,18 @@
     
             <div class="form-group">
                 <label for="recipe_summary">Dish Summary</label>
-                <textarea name="recipe_summary" id="recipe_summary" class="form-control" rows "5" required></textarea>
+                <textarea name="recipe_summary" id="recipe_summary" class="form-control" rows="5" required></textarea>
             </div>
     
             <div class="form-group">
                 <label for="recipe_ingredients">Ingredients</label>
-                <textarea name="recipe_ingredients" id="recipe_ingredients" class="form-control" rows "5" required></textarea>
+                <textarea name="recipe_ingredients" id="recipe_ingredients" class="form-control" rows="5" required></textarea>
             </div>
     
     
             <div class="form-group">
                 <label for="recipe_instructions">Instructions</label>
-                <textarea name="recipe_instructions" id="recipe_instructions" class="form-control" rows "5" required></textarea>
+                <textarea name="recipe_instructions" id="recipe_instructions" class="form-control" rows="5" required></textarea>
             </div>
     
     
