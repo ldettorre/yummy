@@ -1,5 +1,9 @@
 body {
     word-wrap: break-word;
+    background-image: url(../img/mainbg.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top:80px;
 }
 
 /*Quick way to change the font of the site*/
@@ -7,12 +11,21 @@ p,h1,h2,h3,h4,h5,a,button,label{
     font-family: 'Merienda', cursive;
 }
 
-.main-bg{
-    background-image: url(../img/mainbg.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-    padding-top:80px;
+p{
+    margin:0px;
 }
+.container-fluid{
+    padding-right: 0px;
+    padding-left:0px;
+}
+
+/*.main-bg{*/
+/*    background-image: url(../img/mainbg.jpg);*/
+/*    background-size: cover;*/
+/*    background-attachment: fixed;*/
+/*    padding-top:80px;*/
+/*}*/
+
 
 
 /*----------Navbar----------*/
