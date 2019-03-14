@@ -9,22 +9,20 @@
         </div>
     </div>
     <div class="row">
-        {% for recipe in selected_cuisine_recipes %} {% if recipe.recipe_status == "public" %}
-        <!-- This if statement allows recipes with the status 'public' to be viewed publicly -->
-        <div class="col-sm-6 profile-recipe white-bg-styling">
-            <p>Title: {{recipe.recipe_title}}</p>
-            <p>Summary: {{recipe.recipe_summary}}</p>
-            <p>This recipe is: {{recipe.recipe_status}}</p>
-            <a href="{{url_for("show_recipe" , recipe_id=recipe._id)}}" class="btn btn-primary edit-recipe-button">Show Recipe</a>
-        </div>
-        {% else %}
-        <!-- This part of the if statement means everything else besides public won't be rendered.  -->
-        <div class="col-sm-4 profile-recipe white-bg-styling">
-            <p>There are no recipes currently made public</p>
-        </div>
-
-
-
+        {% for recipe in selected_cuisine_recipes %} {% if recipe.recipe_status == "private" %}
+            <!-- This statement will appear if there are only private recipes of this cuisine.  -->
+            <div class="col-sm-4 profile-recipe white-bg-styling">
+                <p>There are no recipes currently published.</p>
+            </div>
+            
+        {% elif recipe.recipe_status == "public" %}
+            <!-- This if statement only allows recipes with the status 'public' to be rendered.  -->
+            <div class="col-sm-6 profile-recipe white-bg-styling">
+                <p>Title: {{recipe.recipe_title}}</p>
+                <p>Summary: {{recipe.recipe_summary}}</p>
+                <p>This recipe is: {{recipe.recipe_status}}</p>
+                <a href="{{url_for("show_recipe" , recipe_id=recipe._id)}}" class="btn btn-primary edit-recipe-button">Show Recipe</a>
+            </div>
 
         {% endif %}{% endfor %}
     </div>

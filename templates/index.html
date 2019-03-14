@@ -9,7 +9,7 @@
         <h1 class="jumbo-text">Welcome {{session["username"]}}!</h1>
         {% else %}
         <h1 class="jumbo-text">Welcome to Yummy!</h1>
-        <p class="jumbo-text">Welcome to Yummy! An online cook book where you can read,<br> add, edit and update your recipes for free!</p>
+        <p class="jumbo-text">An online cook book where you can read,<br> add, edit and update your recipes for free!</p>
         {% endif %}
 
         <a class="btn btn-custom" href="/get_recipe" role="button">Find your feast!</a>
@@ -21,7 +21,7 @@
         <a class="register-link" data-toggle="modal" data-target="#registerModal">Register here</a> {% with messages = get_flashed_messages() %} {% if messages %}
         <div class=flashes>
             {% for message in messages %}
-            <p class="flash-alert">{{message}}</p>
+            <p class="login-alert">{{message}}</p>
             {% endfor %}
         </div>
         {% endif %} {% endwith %} {% endif %}

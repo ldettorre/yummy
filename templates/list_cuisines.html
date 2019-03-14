@@ -9,7 +9,7 @@
             {% with messages = get_flashed_messages() %} {% if messages %}
             <div class=flashes>
                 {% for message in messages %}
-                <p class="flash-alert">{{message}}</p>
+                <p class="cuisine-alert">{{message}}</p>
                 {% endfor %}
             </div>
             {% endif %} {% endwith %}
@@ -18,7 +18,7 @@
 
     <div class="row text-center">
         {% for cuisine in cuisines %}
-        <div class="col-md-3 col-sm-4 white-bg-styling">
+        <div class="col-md-3 col-sm-4 white-bg-styling cuisine-title-column">
             <a href="{{ url_for("get_cuisines", cuisine_id = cuisine._id)}}"> {{cuisine.recipe_cuisine.capitalize()}} </a>
         </div>
         {% endfor %}
