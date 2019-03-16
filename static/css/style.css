@@ -129,6 +129,13 @@ footer {
     color:white;
 }
 
+
+/*----------Show Recipe Page----------*/
+
+.info-spacing p {
+    margin: 5px 0px 5px 0px;
+}
+
 /*----------Get Recipes Page----------*/
 
 .edit-recipe-button {
@@ -161,7 +168,7 @@ footer {
 }
 
 .text_format {
-    white-space: pre-wrap;
+    /*white-space: pre-wrap;*/
 }
 
 

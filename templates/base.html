@@ -28,7 +28,7 @@
           <ul class="nav navbar-nav navbar-right navbar-buttons">
             <li><a href="/get_recipe" class="btn navbar-btn">Recipes</a></li>
             <li><a href="/add_recipe" class="btn navbar-btn">Add Recipe</a></li>
-            <li><a href="/list_cuisines" class="btn navbar-btn">Cuisines</a></li>
+            <li><a href="/all_cuisines" class="btn navbar-btn">Cuisines</a></li>
             <li><a href="/all_authors" class="btn navbar-btn">Authors</a></li>
             {% if session["username"] %}
             <li><a href="/userpage" class="btn navbar-btn">My Profile</a></li> 
@@ -75,7 +75,7 @@
                 <button type="submit" class="btn btn-custom">Register</button>
             </form>
             <div>
-                <!-- The use of data-dismiss at the beginning of the a tag allows a seamless transition from one modal to another if the user has already registerd -->
+                <!-- The use of data-dismiss at the beginning of the a tag allows a seamless transition from one modal to another if the user has already registered -->
                 <a data-dismiss="modal" data-toggle="modal" data-target="#loginModal" >Already registered?</a> 
             </div>
      </div>

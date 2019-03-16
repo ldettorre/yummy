@@ -93,10 +93,10 @@ def chinese_recipes():
 
 #----- Recipe Functions -----#
 
-@app.route("/show-recipe/<recipe_id>")
+@app.route("/show_recipe/<recipe_id>")
 def show_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template("show-recipe.html" , recipe=recipe)
+    return render_template("show_recipe.html" , recipe=recipe)
 
 @app.route("/get_recipe")
 def get_recipe():
@@ -167,10 +167,10 @@ def delete_recipe(recipe_id):
     
 #----- Cuisine Functions -----#
 
-@app.route("/list_cuisines")
-def list_cuisines():
+@app.route("/all_cuisines")
+def all_cuisines():
     cuisines = mongo.db.cuisine.find().sort("recipe_cuisine")
-    return render_template("list_cuisines.html", cuisines=cuisines)
+    return render_template("all_cuisines.html", cuisines=cuisines)
     
     
 @app.route("/get_cuisines/<cuisine_id>")
@@ -232,7 +232,7 @@ def all_authors():
 def authors_recipes(author):
     selected_authors_recipes = mongo.db.recipes.find({"recipe_author": author})
         
-    return render_template("recipe_by_author.html", selected_authors_recipes=selected_authors_recipes )
+    return render_template("filter_author.html", selected_authors_recipes=selected_authors_recipes )
 
 if __name__ == "__main__":
     app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)),debug=True)
