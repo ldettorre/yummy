@@ -10,7 +10,7 @@
     </div>
     <div class="row text-center">
         {% for author in authors %}
-        <div class="col-md-3 col-sm-4 col-xs-6 white-bg-styling cuisine-title-column">
+        <div class="col-md-3 col-sm-4 white-bg-styling cuisine-title-column">
             <a href="{{ url_for("authors_recipes", author = author)}}">{{author}}</a>
         </div>
         {% endfor %}
