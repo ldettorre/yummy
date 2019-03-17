@@ -66,7 +66,7 @@ def register():
 @app.route("/<username>") 
 def get_userpage(username):
     username = session["username"]
-    recipes = mongo.db.recipes.find()
+    recipes = mongo.db.recipes.find().sort("recipe_title")
     return render_template("userpage.html", username=username, recipes=recipes)
 
 @app.route("/mexican_recipes")
@@ -100,7 +100,7 @@ def show_recipe(recipe_id):
 
 @app.route("/get_recipe")
 def get_recipe():
-    recipes = mongo.db.recipes.find()
+    recipes = mongo.db.recipes.find().sort("recipe_title")
     recipes_total = mongo.db.recipes.find().sort("recipe_title").count()
     return render_template("get_recipe.html", recipes=recipes,recipes_total=recipes_total)
     
@@ -224,8 +224,7 @@ def update_cuisine(cuisine_id):
 @app.route("/all_authors")
 def all_authors():
     authors = sorted(mongo.db.recipes.distinct("recipe_author"))
-    # author_total = len(authors)
-    return render_template("all_authors.html", authors=authors)
+    return render_template("all_authors.html", authors=authors, )
 
 
 @app.route("/authors_recipes/<author>")  

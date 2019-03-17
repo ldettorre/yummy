@@ -3,28 +3,33 @@
 {% block content %} 
 
 <div class="container">
-    {% for recipe in recipes %}
-        {% if recipe.recipe_status == "public" %}
-        <div class="row">
-            <div class="white-bg-styling">
-                <div id="recipeHeading">
-                    <h1>{{recipe.recipe_title}}</h1>
-                    <p>Submitted by: {{recipe.recipe_author}}</p>
-                    <p>{{recipe.recipe_author}} has submitted their {{recipe.recipe_cuisine}} recipe for {{recipe.recipe_title}}
-                    which they describe as {{recipe.recipe_difficulty}} to make. This should take you around {{recipe.recipe_preparation_time}}
-                    minutes to prepare and {{recipe.recipe_cooking_time}} minutes to cook. You will then be able to make {{recipe.recipe_portion}}
-                     portions.</p>
-                </div>
-                <div>
-                    <a href="{{url_for("show_recipe" , recipe_id=recipe._id)}}" class="btn btn-custom edit-recipe-button">Show Recipe</a>
-                    {% if recipe.recipe_editor == session["username"] %}  <!-- If the session username matches the recipe's editor name then the options below to delete and edit the recipe will be available -->
-                    <a href="{{url_for("delete_recipe" , recipe_id=recipe._id)}}" class="btn btn-custom edit-recipe-button">Remove Recipe</a>
-                    <a href="{{url_for("edit_recipe" , recipe_id=recipe._id)}}" class="btn btn-custom edit-recipe-button">Edit Recipe</a>
-                    {% endif %}
-                </div>
-                
-            </div>
+    <div class="row">
+        <div class="col-sm-9 white-bg-styling">
+            <h1> Browse all our recipes.. we're an open book.</h1>
         </div>
-        {% endif %}{% endfor %}
+    </div>
+        {% for recipe in recipes %}
+            {% if recipe.recipe_status == "public" %}
+            <div class="row">
+                <div class="white-bg-styling">
+                    <div id="recipeHeading">
+                        <h3>{{recipe.recipe_title}}</h3>
+                        <p>Submitted by: {{recipe.recipe_author}}</p>
+                        <p>{{recipe.recipe_author}} has submitted their {{recipe.recipe_cuisine}} recipe for {{recipe.recipe_title}}
+                        which they describe as {{recipe.recipe_difficulty}} to make. This should take you around {{recipe.recipe_preparation_time}}
+                        minutes to prepare and {{recipe.recipe_cooking_time}} minutes to cook. You will then be able to make {{recipe.recipe_portion}}
+                         portions.</p>
+                    </div>
+                    <div>
+                        <a href="{{url_for("show_recipe" , recipe_id=recipe._id)}}" class="btn btn-custom edit-recipe-button">Show Recipe</a>
+                        {% if recipe.recipe_editor == session["username"] %}  <!-- If the session username matches the recipe's editor name then the options below to delete and edit the recipe will be available -->
+                        <a href="{{url_for("delete_recipe" , recipe_id=recipe._id)}}" class="btn btn-custom edit-recipe-button">Remove Recipe</a>
+                        <a href="{{url_for("edit_recipe" , recipe_id=recipe._id)}}" class="btn btn-custom edit-recipe-button">Edit Recipe</a>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+            </div>
+            {% endif %}{% endfor %}
 </div>
 {% endblock %}

@@ -11,6 +11,10 @@ p,h1,h2,h3,h4,h5,a,button,label {
     font-family: 'Merienda', cursive;
 }
 
+h1,h2,h3 {
+    margin-top:10px;
+}
+
 p {
     margin:0px;
 }
@@ -19,14 +23,6 @@ p {
     padding-right: 0px;
     padding-left:0px;
 }
-
-/*.main-bg{*/
-/*    background-image: url(../img/mainbg.jpg);*/
-/*    background-size: cover;*/
-/*    background-attachment: fixed;*/
-/*    padding-top:80px;*/
-/*}*/
-
 
 
 /*----------Navbar----------*/
@@ -146,7 +142,7 @@ footer {
 .white-bg-styling{
     background-color: white;
     margin: 10px 5px 10px 5px;
-    padding-bottom:10px;
+    padding:10px;
     border-radius: 10px;
 }
 /*----------ADD Recipes Page----------*/
@@ -165,10 +161,6 @@ footer {
     border-radius: 10px;
     background-color: white;
     padding:10px 10px 10px 10px;
-}
-
-.text_format {
-    /*white-space: pre-wrap;*/
 }
 
 
