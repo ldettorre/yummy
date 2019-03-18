@@ -11,6 +11,7 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.secret_key = os.urandom(24)
 
 
+
 mongo = PyMongo(app)
 
 @app.route("/")
@@ -62,12 +63,14 @@ def register():
     return render_template("index.html")
         
         
+
 @app.route("/<username>") 
 def get_userpage(username):
     username = session["username"]
     recipes = mongo.db.recipes.find().sort("recipe_title")
     return render_template("userpage.html", username=username, recipes=recipes)
 
+# Below are the routes for the 4 hardcoded options on the index page
 @app.route("/mexican_recipes")
 def mexican_recipes():
     recipes = mongo.db.recipes.find({"recipe_cuisine":"mexican"})
@@ -233,5 +236,5 @@ def authors_recipes(author):
     return render_template("filter_author.html", selected_authors_recipes=selected_authors_recipes )
 
 if __name__ == "__main__":
-    app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)),debug=True)
-    
+    app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)),debug=False)
+    # Keep 'debug=False' for production to stop users viewing detailed error messages
