@@ -6,7 +6,7 @@ from bson.objectid import ObjectId
 
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI") 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.secret_key = os.urandom(24)
 
@@ -174,13 +174,19 @@ def all_cuisines():
     cuisines = mongo.db.cuisine.find().sort("recipe_cuisine")
     return render_template("all_cuisines.html", cuisines=cuisines)
     
-    
+
+# I required 2 calls of the same data from the database as using a single call for the purpose of a count
+# and also for a loop did not work. Hence the original call name 'selected_cuisine_recipes' and the abreviated name 'scr'
 @app.route("/get_cuisines/<cuisine_id>")
 def get_cuisines(cuisine_id):
     selected_cuisine = mongo.db.cuisine.find_one({"_id": ObjectId(cuisine_id)})
     selected_cuisine_recipes = mongo.db.recipes.find({"recipe_cuisine":selected_cuisine["recipe_cuisine"]})
+    scr = mongo.db.recipes.find({"recipe_cuisine":selected_cuisine["recipe_cuisine"]})
+    count = 0 
+    for r in scr:
+        count +=1
     
-    return render_template("filter_cuisines.html", selected_cuisine_recipes=selected_cuisine_recipes ) 
+    return render_template("filter_cuisines.html", selected_cuisine_recipes=selected_cuisine_recipes, count=count, selected_cuisine=selected_cuisine) 
 
     
 @app.route("/add_cuisine")
@@ -236,5 +242,6 @@ def authors_recipes(author):
     return render_template("filter_author.html", selected_authors_recipes=selected_authors_recipes )
 
 if __name__ == "__main__":
-    app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)),debug=False)
+    app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)),debug=
+    True)
     # Keep 'debug=False' for production to stop users viewing detailed error messages

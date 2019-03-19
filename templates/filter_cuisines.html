@@ -4,24 +4,28 @@
 
 <div class="container">
     <div class="row">
-        <div class=" col-sm-6 white-bg-styling">
-            <h2>Recipies by Cuisine </h2>
+        <div class=" col-sm-8 white-bg-styling">
+            <h2>You are searching for {{selected_cuisine.recipe_cuisine.capitalize()}} recipies. </h2>
+            {% if count > 0 %}
+            <p>Please feel free to browse the recipies posted by our users.</p>
+            {% else %}
+            <p>There are currently no {{selected_cuisine.recipe_cuisine.capitalize()}} recipies posted yet.</p>
+            <p>Why not add one of your own now? Click <a href="/add_recipe">here</a> to submit a recipe.</p>
+            {% endif %}
         </div>
     </div>
     <div class="row">
-        {% for recipe in selected_cuisine_recipes %} {% if recipe.recipe_status == "private" %}
-            <!-- This statement will appear if there are only private recipes of this cuisine.  -->
-            <div class="col-sm-4 profile-recipe white-bg-styling">
-                <p>There are no recipes currently published.</p>
-            </div>
-            
-        {% elif recipe.recipe_status == "public" %}
+        {% for recipe in selected_cuisine_recipes %} {% if recipe.recipe_status == "public" %}
             <!-- This if statement only allows recipes with the status 'public' to be rendered.  -->
             <div class="col-sm-6 profile-recipe white-bg-styling">
                 <p>Title: {{recipe.recipe_title}}</p>
                 <p>Summary: {{recipe.recipe_summary}}</p>
                 <p>This recipe is: {{recipe.recipe_status}}</p>
                 <a href="{{url_for("show_recipe" , recipe_id=recipe._id)}}" class="btn btn-primary edit-recipe-button">Show Recipe</a>
+            </div>
+        {% elif recipe.recipe_status == "private" %}
+            <div class="col-sm-6 profile-recipe white-bg-styling">
+                <p>Uh-Oh! This author of this recipe is keeping their secrets safe! Why not chose another <a href="/get_recipe">recipe</a> or <a href="/all_cuisines">cuisine</a>.</p>
             </div>
 
         {% endif %}{% endfor %}
