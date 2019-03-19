@@ -9,6 +9,15 @@ Click [here](https://data-centric-development.herokuapp.com/) to view Yummy live
 
 ## UI & UX 
 
+###### User Stories
+The below user stories are catered for on this recipe book site.
+* As a user, I want to browse recipies freely by cuisine, so I may find recipies based on the cuisine I'm in the mood for.
+* As a user I want to browse all recipes publicly available on the site, so I may browse all the options at once.
+* As a user, I want to post my own recipes to Yummy, so that other people can make use of them.
+* As a user, I want to store my recipies privately for my own use.
+* As a user, I want to see all my recipes on my own profile page.
+
+
 
 ## Technologies used for this project
 * HTML
@@ -64,8 +73,20 @@ While the content responded very well in all scenarios, at the lower resoloution
 The following has also been manually tested.
 * All navigation bar buttons bring the user to the intended section of the site.
 * The navbar buttons change to a single dropdown option when below 768 pixel width.
-* The login and register feature do not allow for duplicates and return the expected flashing notification.
+* Users cannot create an account if a username has already been taken.
+* Users cannot log in unless the username has first been registered.
+* Flashing messages work as intended should users attempt the 2 steps above.
+* Only logged in users can create recipies, those who are not logged in will receive a flashing message on the index page.
 
+To test the site I've also created a dummy account called 'tester' and ran through the expected uses of a typical user. To show where the tester account has interacted, I've used 'tester' as the text input where possible. In situations where there was an alternate form of input required, I've just selected random options.
+* Created a new user called 'tester'.
+* Created a new cuisine called 'tester'.
+* Created a new recipe titled 'tester'.
+* I've located this new recipe on the recipes page, under the tester cuisine section and also under the author name 'tester'.
+* Upon clicking 'My profile' in the top corner, I was brought to a page with my posted recipe and name rendered in the greeting.
+* I've tested the edit feature by clicking the edit button on my userpage for tester, changing the 'I want this recipe to be available:' from 'public' to 'private' and hitting 'submit recipe'.
+* I can confirm this feature works as it is unavailable on the recipies page, and the cuisine and author pages show the expected message for recipes with the 'private' status.
+* In order to test the remove recipe option, I've created a new recipe using the same method as above however using the word ' delete' and then hit the remove recipe button. The 'delete' recipe was removed and upon further inspection of my database using MLab, the tester recipe was available and the delete recipe was not.
 
 ## User Stories
 

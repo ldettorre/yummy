@@ -204,11 +204,11 @@ def insert_cuisine():
         
         if existing_cuisines is None:
             cuisines.insert(({"recipe_cuisine": request.form.get("recipe_cuisine").lower()}))
-            return redirect(url_for("list_cuisines", cuisines=cuisines))
+            return redirect(url_for("all_cuisines", cuisines=cuisines))
         
         flash("This cuisine already exists.")
-        return redirect(url_for("list_cuisines"))
-    return render_template("list_cuisines.html")
+        return redirect(url_for("all_cuisines"))
+    return render_template("all_cuisines.html")
 
 
 @app.route("/delete_cuisine/<cuisine_id>")
