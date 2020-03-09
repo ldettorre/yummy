@@ -63,7 +63,7 @@ def register():
     return render_template("index.html")
         
         
-
+#Renders the username page
 @app.route("/<username>") 
 def get_userpage(username):
     username = session["username"]
