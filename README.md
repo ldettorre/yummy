@@ -4,8 +4,6 @@ A Data Centric Development(C.R.U.D.) Project.
 Welcome to Yummy, my free online recipe book. "Yummy" is a C.R.U.D.(Create, Read, Update, Delete) application I've built using technologies I've studied in the Data Centric Development Module with Code Institute. The theme of the site is a simple recipe book where users can easily and freely find new recipes posted by other users aswell as create, update and delete their own. Users can also decide whether or not to publish recipes for all to see or to keep them private. 
 
 
-Click [here](https://data-centric-development.herokuapp.com/) to view Yummy live!
-
 
 ## UI & UX 
 The Idea for Yummy came from having always watched the Tasty videos that plague my Facebook news feed but not having anywhere easy to store them.  The fact that the "Tasty" recipes always seemed so simple, it made me want to create an equally simple to use site to store them. Although the site is minimalistic in features right now, it provides the user with an easy to navigate User Interface where there is no fear of being lost on the site. The experience is also very user friendly with everything being easy to read on desktop and also comfortable enough on mobile screens.
